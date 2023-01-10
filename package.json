@@ -1,0 +1,15 @@
+{
+  "name": "node-code-gen",
+  "version": "0.0.1",
+  "description": "A code generator for js/ts projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hygen": "^6.2.11"
+  },
+  "bin": "./.bin/cli.js"
+}

@@ -47,9 +47,10 @@ module.exports = [
       },
     ],
     name: 'features',
-    message: 'Which of the following features you want to enable? (Use space key to select/deselect)',
+    message:
+      'Which of the following features you want to enable? (Use space key to select/deselect)',
     result(names) {
       return this.map(names);
-    }
-  }
-]
+    },
+  },
+];

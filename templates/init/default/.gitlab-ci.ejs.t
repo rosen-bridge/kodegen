@@ -12,6 +12,9 @@ stages:
 <% if (features.testing) { -%>
   - test
 <% } -%>
+<% if (features.semanticRelease) { -%>
+  - publish
+<% } -%>
 
 installation:
   stage: installation
@@ -61,4 +64,16 @@ test:
       coverage_report:
         coverage_format: cobertura
         path: coverage/cobertura-coverage.xml
+<% } -%>
+<% if (features.semanticRelease) { -%>
+
+publish:
+  stage: publish
+  cache:
+    key: $CI_COMMIT_REF_NAME
+    policy: pull
+    paths:
+      - node_modules
+  script:
+    - npx semantic-release
 <% } -%>

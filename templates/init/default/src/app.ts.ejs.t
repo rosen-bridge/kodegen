@@ -22,7 +22,7 @@ app.use('/v1', router);
 
 const startApp = () => {
   app.listen(apiPort, () => {
-<% if (features.database) { -%>
+<% if (features.logging) { -%>
     logger.info(`Service started at http://localhost:${apiPort}`);
 <% } else { -%>
     console.log(`Service started at http://localhost:${apiPort}`);

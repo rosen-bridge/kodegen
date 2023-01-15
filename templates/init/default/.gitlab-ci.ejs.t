@@ -1,5 +1,5 @@
 ---
-to: "<%= features.ciCd ? '.gitlab-ci.yml' : null %>"
+to: "<%= features.ciCd ? `./${projectName}/.gitlab-ci.yml` : null %>"
 ---
 image: node:18.12
 

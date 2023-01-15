@@ -1,5 +1,5 @@
 ---
-to: .lintstagedrc.js
+to: ./<%= projectName %>/.lintstagedrc.js
 ---
 export default {
   '*.ts': () => 'tsc --noEmit',

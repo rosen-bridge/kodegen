@@ -1,5 +1,5 @@
 ---
-to: './src/index.ts'
+to: ./src/<%= projectName %>/index.ts
 ---
 <% if (features.database) { -%>
 import './bootstrap';

@@ -1,4 +1,4 @@
 ---
-to: "<%= features.prettierEslint ? '.eslintignore' : null %>"
+to: "<%= features.prettierEslint ? `./${projectName}/.eslintignore` : null %>"
 ---
 dist

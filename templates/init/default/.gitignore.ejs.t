@@ -1,5 +1,5 @@
 ---
-to: .gitignore
+to: ./<%= projectName %>/.gitignore
 ---
 # Logs
 logs

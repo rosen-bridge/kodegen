@@ -1,5 +1,5 @@
 ---
-to: "<%= features.semanticRelease ? '.releaserc' : null %>"
+to: "<%= features.semanticRelease ? `./${projectName}/.releaserc` : null %>"
 ---
 {
   "branches": [

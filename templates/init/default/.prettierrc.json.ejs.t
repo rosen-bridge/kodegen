@@ -1,5 +1,5 @@
 ---
-to: "<%= features.prettierEslint ? '.prettierrc.json' : null %>"
+to: "<%= features.prettierEslint ? `./${projectName}/.prettierrc.json` : null %>"
 ---
 {
   "singleQuote": true

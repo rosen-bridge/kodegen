@@ -1,4 +1,4 @@
 ---
-to: README.md
+to: ./<%= projectName %>/README.md
 ---
 # <%= projectName %>

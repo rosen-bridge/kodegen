@@ -1,5 +1,5 @@
 ---
-to: "<%= features.express ? './src/types/router.ts' : null %>"
+to: "<%= features.express ? `./${projectName}/src/types/router.ts` : null %>"
 ---
 import { Router } from 'express';
 

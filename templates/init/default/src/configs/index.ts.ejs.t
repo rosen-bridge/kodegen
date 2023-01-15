@@ -1,5 +1,5 @@
 ---
-to: ./src/configs/index.ts
+to: ./<%= projectName %>/src/configs/index.ts
 ---
 import config from 'config';
 

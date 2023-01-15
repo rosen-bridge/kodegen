@@ -4,8 +4,6 @@ const path = require('path');
 const defaultTemplates = path.join(__dirname, 'templates');
 const execa = require('execa');
 
-execa('git init', { shell: true });
-
 runner(process.argv.slice(2), {
   templates: defaultTemplates,
   cwd: process.cwd(),

@@ -1,5 +1,5 @@
 ---
-to: ./config/default.yml
+to: ./<%= projectName %>/config/default.yml
 ---
 <% if (features.express) { -%>
 apiPort: 8000

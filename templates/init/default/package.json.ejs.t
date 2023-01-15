@@ -1,6 +1,6 @@
 ---
-to: package.json
-sh: npx --yes sort-package-json && npm i
+to: ./<%= projectName %>/package.json
+sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
 ---
 {
   "name": "<%= h.inflection.dasherize(projectName) %>",

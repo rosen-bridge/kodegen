@@ -1,5 +1,5 @@
 ---
-to: "<%= features.prettierEslint ? '.eslintrc.json' : null %>"
+to: "<%= features.prettierEslint ? `./${projectName}/.eslintrc.json` : null %>"
 ---
 {
   "root": true,

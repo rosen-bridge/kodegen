@@ -1,5 +1,5 @@
 ---
-to: "<%= features.logging ? './src/utils/logger.ts' : null %>"
+to: "<%= features.logging ? `./${projectName}/src/utils/logger.ts` : null %>"
 ---
 import path from 'path';
 import winston, { format } from 'winston';

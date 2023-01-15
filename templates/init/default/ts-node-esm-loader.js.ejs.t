@@ -1,5 +1,5 @@
 ---
-to: ./ts-node-esm-loader.js
+to: ./<%= projectName %>/ts-node-esm-loader.js
 ---
 import { resolve as resolveTs } from 'ts-node/esm';
 import * as tsConfigPaths from 'tsconfig-paths';

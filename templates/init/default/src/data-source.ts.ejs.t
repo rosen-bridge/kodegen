@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 
 import { DataSource } from 'typeorm';
 
-import entities from '@/entities';
+import entities from './db/entities';
 
 import migrations from './db/migrations';
 

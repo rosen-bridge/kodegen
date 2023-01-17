@@ -79,7 +79,7 @@ publish:
     - npm version patch --no-git-tag-version > /dev/null
     # then add alpha tag and the hash, indicating a pre-release
     - npm version `node -p -e "require('./package.json').version"`-alpha-`git rev-parse --short HEAD` --no-git-tag-version
-    - npm publishg
+    - npm publish
   only:
     - merge_requests
 <% } -%>

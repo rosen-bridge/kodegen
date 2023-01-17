@@ -12,7 +12,7 @@ stages:
 <% if (features.testing) { -%>
   - test
 <% } -%>
-<% if (features.semanticRelease) { -%>
+<% if (features.prerelease) { -%>
   - publish
 <% } -%>
 
@@ -65,7 +65,7 @@ test:
         coverage_format: cobertura
         path: coverage/cobertura-coverage.xml
 <% } -%>
-<% if (features.semanticRelease) { -%>
+<% if (features.prerelease) { -%>
 
 publish:
   stage: publish
@@ -75,5 +75,11 @@ publish:
     paths:
       - node_modules
   script:
-    - npx semantic-release
+    # change the patch part of the version,
+    - npm version patch --no-git-tag-version > /dev/null
+    # then add alpha tag and the hash, indicating a pre-release
+    - npm version `node -p -e "require('./package.json').version"`-alpha-`git rev-parse --short HEAD` --no-git-tag-version
+    - npm publishg
+  only:
+    - merge_requests
 <% } -%>

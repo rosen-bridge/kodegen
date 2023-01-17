@@ -42,8 +42,8 @@ module.exports = [
         message: 'Database (with TypeORM)',
       },
       {
-        name: 'semanticRelease',
-        message: 'Semantic release',
+        name: 'prerelease',
+        message: 'Prerelease on opened merge request (and new commits to open MR)',
       },
     ],
     name: 'features',

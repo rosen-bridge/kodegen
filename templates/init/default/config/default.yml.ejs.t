@@ -8,6 +8,6 @@ apiPort: 8000
 logs:
   maxSize: 20m
   maxFilesCount: 14d
-  path: ./logs
+  path: ./logs/
   level: info
 <% } -%>

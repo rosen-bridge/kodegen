@@ -15,7 +15,7 @@ const __dirname = path.dirname(__filename);
 
 export const dataSource = new DataSource({
   type: 'sqlite',
-  database: __dirname + './sqlite/db.sqlite',
+  database: __dirname + '/sqlite/db.sqlite',
   entities,
   migrations,
   synchronize: false,

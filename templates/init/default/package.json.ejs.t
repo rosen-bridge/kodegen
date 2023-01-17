@@ -23,8 +23,8 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "build": "rimraf dist && tsc",
 <% if (features.database) { -%>
     "typeorm": "NODE_OPTIONS=--experimental-specifier-resolution=node typeorm-ts-node-esm",
-    "typeorm:generate": "npm run typeorm migration:generate ./src/db/migrations/migration -- -p -d ./data-source.ts",
-    "typeorm:migrate": "npm run typeorm migration:run -- -d data-source.ts",
+    "typeorm:generate": "npm run typeorm migration:generate ./src/db/migrations/migration -- -p -d ./src/data-source.ts",
+    "typeorm:migrate": "npm run typeorm migration:run -- -d ./src/data-source.ts",
 <% } -%>
     "type-check": "tsc --noEmit"
   },

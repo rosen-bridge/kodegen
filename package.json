@@ -1,5 +1,5 @@
 {
-  "name": "node-code-gen",
+  "name": "kodegen",
   "version": "0.0.1",
   "description": "A code generator for js/ts projects",
   "main": "index.js",

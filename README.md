@@ -1,3 +1,3 @@
-# node-code-gen
+# kodegen
 
 TODO: Write a comprehensive README.

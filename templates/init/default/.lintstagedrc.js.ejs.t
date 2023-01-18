@@ -8,6 +8,6 @@ export default {
   '*': 'prettier --ignore-unknown --write',
 <% } -%>
 <% if (features.testing) { -%>
-  '*.{js,ts}': 'vitest related',
+  '*.{js,ts}': 'vitest related --run',
 <% } -%>
 };

@@ -2,7 +2,9 @@
 to: ./<%= projectName %>/config/default.yml
 ---
 <% if (features.express) { -%>
-apiPort: 8000
+api:
+  port: 8800
+  host: 127.0.0.1
 <% } -%>
 <% if (features.logging) { -%>
 logs:

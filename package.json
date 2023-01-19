@@ -4,7 +4,8 @@
   "description": "A code generator for js/ts projects",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "npm publish --access public"
   },
   "author": "",
   "license": "ISC",

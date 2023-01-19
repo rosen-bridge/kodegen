@@ -1,9 +1,9 @@
 ---
-to: "<%= features.express ? `./{projectName}/src/app.ts` : null %>"
+to: "<%= features.express ? `./${projectName}/src/app.ts` : null %>"
 ---
 import express from 'express';
 
-import { apiPort } from '@/configs';
+import { apiPort, apiHost } from '@/configs';
 <% if (features.logging) { -%>
 import loggerFactory from '@/utils/logger';
 <% } -%>
@@ -21,11 +21,11 @@ app.use(express.json());
 app.use('/v1', router);
 
 const startApp = () => {
-  app.listen(apiPort, () => {
+  app.listen(apiPort, apiHost, () => {
 <% if (features.logging) { -%>
-    logger.info(`Service started at http://localhost:${apiPort}`);
+    logger.info(`Service started at http://${apiHost}:${apiPort}`);
 <% } else { -%>
-    console.log(`Service started at http://localhost:${apiPort}`);
+    console.log(`Service started at http://${apiHost}:${apiPort}`);
 <% } -%>
   });
 };

@@ -4,7 +4,8 @@ to: ./<%= projectName %>/src/configs/index.ts
 import config from 'config';
 
 <% if (features.express) { -%>
-export const apiPort = config.get<number>('apiPort');
+export const apiPort = config.get<number>('api.port');
+export const apiHost = config.get<string>('api.host');
 <% } -%>
 <% if (features.logging) { -%>
 

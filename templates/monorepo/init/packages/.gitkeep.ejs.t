@@ -1,0 +1,3 @@
+---
+to: ./<%= monorepoName %>/packages/.gitkeep
+---

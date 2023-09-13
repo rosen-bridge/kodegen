@@ -5,6 +5,7 @@ image: node:18.12
 
 stages:
   - installation
+  - build
   - type-check
 <% if (features.prettierEslint) { -%>
   - lint

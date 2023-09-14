@@ -1,0 +1,3 @@
+---
+to: ./<%= servicePath %>/tests/.gitkeep
+---

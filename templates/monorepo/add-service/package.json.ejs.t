@@ -4,7 +4,7 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
 ---
 {
   "name": "<%= h.inflection.dasherize(serviceName) %>",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "<%= description %>",
   "repository": "<%= repo %>",
   "main": "dist/index.js",

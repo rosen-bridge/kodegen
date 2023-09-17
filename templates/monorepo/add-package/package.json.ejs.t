@@ -19,7 +19,7 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
     "test": "vitest",
     "coverage": "vitest run --coverage",
 <% } -%>
-    "build": "tsc --build",
+    "build": "tsc --build tsconfig.build.json",
     "type-check": "tsc --noEmit",
     "release": "npm run build && npm publish --access public"
   },

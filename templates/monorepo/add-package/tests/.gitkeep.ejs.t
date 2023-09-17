@@ -1,0 +1,3 @@
+---
+to: ./<%= packagePath %>/tests/.gitkeep
+---

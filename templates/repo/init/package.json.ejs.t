@@ -65,8 +65,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "lint-staged": "^13.0.3",
     "ts-node": "^10.7.0",
     "@types/node": "^18.11.18",
-    "tsconfig-paths": "^4.1.2",
-    "typescript": "^5.0.0"
+    "tsconfig-paths": "^4.1.2"
   },
   "engines": {
     "node": ">=18.12.0"

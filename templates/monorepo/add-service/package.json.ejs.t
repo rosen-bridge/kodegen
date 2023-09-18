@@ -47,8 +47,8 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
   },
   "devDependencies": {
 <% if (features.prettierEslint) { -%>
-    "@typescript-eslint/eslint-plugin": "^5.26.0",
-    "@typescript-eslint/parser": "^5.26.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
     "prettier": "2.7.1",

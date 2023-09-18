@@ -35,8 +35,7 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
     "@typescript-eslint/parser": "^6.7.0",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
-    "prettier": "2.7.1",
-    "typescript": "^5.0.0"
+    "prettier": "2.7.1"
 <% } -%>
   }
 }

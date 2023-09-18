@@ -50,8 +50,8 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "@types/express": "^4.17.13",
 <% } -%>
 <% if (features.prettierEslint) { -%>
-    "@typescript-eslint/eslint-plugin": "^5.26.0",
-    "@typescript-eslint/parser": "^5.26.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
     "prettier": "2.7.1",
@@ -66,7 +66,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "ts-node": "^10.7.0",
     "@types/node": "^18.11.18",
     "tsconfig-paths": "^4.1.2",
-    "typescript": "^4.9.4"
+    "typescript": "^5.0.0"
   },
   "engines": {
     "node": ">=18.12.0"

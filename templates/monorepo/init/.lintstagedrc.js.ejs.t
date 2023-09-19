@@ -2,7 +2,7 @@
 to: ./<%= monorepoName %>/.lintstagedrc.js
 ---
 export default {
-  '*.ts': () => 'tsc --noEmit',
+  '*.ts': () => 'npm run type-check',
 <% if (features.prettierEslint && features.testing) { -%>
   '*.{js,ts}': ['eslint --fix', 'vitest related --run'],
 <% } else if (features.prettierEslint) { -%>

@@ -24,7 +24,7 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
     "release": "npm run build && npm publish --access public"
   },
   "author": "<%= author %>",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "devDependencies": {
 <% if (features.prettierEslint) { -%>
     "@typescript-eslint/eslint-plugin": "^6.7.0",

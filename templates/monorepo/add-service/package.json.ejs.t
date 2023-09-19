@@ -29,7 +29,7 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
     "type-check": "tsc --noEmit"
   },
   "author": "<%= author %>",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "dependencies": {
 <% if (features.express) { -%>
     "express": "^4.18.1",

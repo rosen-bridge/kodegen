@@ -1,8 +1,13 @@
 ---
 to: ./<%= servicePath %>/tsconfig.json
 ---
+<%
+    normalizedServicePath = servicePath.replace('./', '')
+    depth = normalizedServicePath.split('/').length
+    extendsPath = '../'.repeat(depth) + 'tsconfig.base.json'
+%>
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "<%= extendsPath %>",
   "compilerOptions": {
     "outDir": "./dist",
     "baseUrl": ".",

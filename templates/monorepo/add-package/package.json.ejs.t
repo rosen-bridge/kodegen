@@ -34,7 +34,7 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
     "prettier": "^3.2.4",
 <% } -%>
 <% if (features.testing) { -%>
-    "@vitest/coverage-istanbul": "^1.2.2"
+    "@vitest/coverage-istanbul": "^1.2.2",
     "vitest": "^1.2.2",
 <% } -%>
     "@types/node": "^20.11.9",

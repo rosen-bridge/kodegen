@@ -9,6 +9,8 @@
   "author": "Rosen Team",
   "license": "GPL-3.0",
   "dependencies": {
+    "@changesets/changelog-git": "^0.2.0",
+    "@changesets/cli": "^2.27.1",
     "hygen": "^6.2.11"
   },
   "bin": "./.bin/cli.js"

@@ -66,7 +66,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "ts-node": "^10.7.0",
     "@types/node": "^18.11.18",
     "tsconfig-paths": "^4.1.2",
-    "typescript": "^5.0.0"
+    "typescript": "^5.3.3"
   },
   "engines": {
     "node": ">=18.12.0"

@@ -8,8 +8,13 @@ export default defineConfig({
     coverage: {
       all: true,
       reporter: ['cobertura', 'text', 'text-summary'],
+      provider: 'istanbul',
     },
     passWithNoTests: true,
-    threads: false,
+    poolOptions: {
+      threads: {
+        singleThread: true,
+      },
+    },
   },
 });

@@ -57,8 +57,8 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "prettier": "2.7.1",
 <% } -%>
 <% if (features.testing) { -%>
-    "@vitest/coverage-c8": "^0.26.3",
-    "vitest": "^0.26.2",
+    "@vitest/coverage-istanbul": "^1.2.2",
+    "vitest": "^1.2.2",
 <% } -%>
     "@types/config": "^0.0.41",
     "husky": "^8.0.0",

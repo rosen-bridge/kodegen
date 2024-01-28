@@ -37,11 +37,11 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
     "@vitest/coverage-istanbul": "^1.2.2"
     "vitest": "^1.2.2",
 <% } -%>
-    "@types/node": "^18.11.18",
+    "@types/node": "^20.11.9",
     "typescript": "^5.3.3"
   },
   "engines": {
-    "node": ">=18.12.0"
+    "node": ">=20.11.0"
   }
 }
 

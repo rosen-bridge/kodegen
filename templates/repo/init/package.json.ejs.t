@@ -64,11 +64,11 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3",
     "ts-node": "^10.7.0",
-    "@types/node": "^18.11.18",
+    "@types/node": "^20.11.9",
     "tsconfig-paths": "^4.1.2",
     "typescript": "^5.3.3"
   },
   "engines": {
-    "node": ">=18.12.0"
+    "node": ">=20.11.0"
   }
 }

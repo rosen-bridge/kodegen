@@ -1,3 +1,3 @@
 ---
-to: ./<%= packagePath %>/tests/.gitkeep
+to: "<%= features.testing ? `./${packagePath}/tests/.gitkeep` : null %>"
 ---

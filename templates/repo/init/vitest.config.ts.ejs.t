@@ -7,7 +7,7 @@ export default defineConfig({
   test: {
     coverage: {
       all: true,
-      reporter: ['cobertura', 'text', 'text-summary'],
+      reporter: 'cobertura',
     },
     passWithNoTests: true,
     threads: false,

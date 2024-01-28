@@ -28,11 +28,11 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3",
 <% if (features.prettierEslint) { -%>
-    "@typescript-eslint/eslint-plugin": "^6.7.0",
-    "@typescript-eslint/parser": "^6.7.0",
-    "eslint": "^8.16.0",
-    "eslint-config-prettier": "^8.5.0",
-    "prettier": "2.7.1"
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.4"
 <% } -%>
   }
 }

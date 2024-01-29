@@ -7,7 +7,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
   "version": "0.0.1",
   "description": "<%= description %>",
   "repository": "<%= repo %>",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "type": "module",
   "scripts": {
 <% if (features.prettierEslint) { -%>
@@ -19,7 +19,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "coverage": "vitest run --coverage",
 <% } -%>
     "start": "node --watch --experimental-specifier-resolution=node --loader ./ts-node-esm-loader.js ./src/index.ts",
-    "start:prod": "node --experimental-specifier-resolution=node ./dist/src/index.js",
+    "start:prod": "node --experimental-specifier-resolution=node ./dist/index.js",
     "build": "rimraf dist && tsc",
 <% if (features.database) { -%>
     "typeorm": "NODE_OPTIONS=--experimental-specifier-resolution=node typeorm-ts-node-esm",

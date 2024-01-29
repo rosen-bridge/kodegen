@@ -7,9 +7,14 @@ export default defineConfig({
   test: {
     coverage: {
       all: true,
+      provider: 'istanbul',
       reporter: 'cobertura',
     },
     passWithNoTests: true,
-    threads: false,
+    poolOptions: {
+      threads: {
+        singleThread: true,
+      },
+    },
   },
 });

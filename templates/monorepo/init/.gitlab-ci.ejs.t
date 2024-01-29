@@ -1,7 +1,7 @@
 ---
 to: "<%= features.ciCd ? `./${monorepoName}/.gitlab-ci.yml` : null %>"
 ---
-image: node:18.12
+image: node:20.11.0
 
 stages:
   - installation

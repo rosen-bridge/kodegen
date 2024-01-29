@@ -47,18 +47,18 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
   },
   "devDependencies": {
 <% if (features.prettierEslint) { -%>
-    "@typescript-eslint/eslint-plugin": "^6.7.0",
-    "@typescript-eslint/parser": "^6.7.0",
-    "eslint": "^8.16.0",
-    "eslint-config-prettier": "^8.5.0",
-    "prettier": "2.7.1",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.4",
 <% } -%>
 <% if (features.testing) { -%>
-    "@vitest/coverage-c8": "^0.26.3",
-    "vitest": "^0.26.2",
+    "@vitest/coverage-istanbul": "^1.2.2",
+    "vitest": "^1.2.2",
 <% } -%>
-    "@types/node": "^18.11.18",
-    "typescript": "^5.0.0",
+    "@types/node": "^20.11.9",
+    "typescript": "^5.3.3",
 <% if (features.express) { -%>
     "@types/express": "^4.17.13",
 <% } -%>

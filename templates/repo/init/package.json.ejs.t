@@ -50,25 +50,25 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "@types/express": "^4.17.13",
 <% } -%>
 <% if (features.prettierEslint) { -%>
-    "@typescript-eslint/eslint-plugin": "^6.7.0",
-    "@typescript-eslint/parser": "^6.7.0",
-    "eslint": "^8.16.0",
-    "eslint-config-prettier": "^8.5.0",
-    "prettier": "2.7.1",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.4",
 <% } -%>
 <% if (features.testing) { -%>
-    "@vitest/coverage-c8": "^0.26.3",
-    "vitest": "^0.26.2",
+    "@vitest/coverage-istanbul": "^1.2.2",
+    "vitest": "^1.2.2",
 <% } -%>
     "@types/config": "^0.0.41",
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3",
     "ts-node": "^10.7.0",
-    "@types/node": "^18.11.18",
+    "@types/node": "^20.11.9",
     "tsconfig-paths": "^4.1.2",
-    "typescript": "^5.0.0"
+    "typescript": "^5.3.3"
   },
   "engines": {
-    "node": ">=18.12.0"
+    "node": ">=20.11.0"
   }
 }

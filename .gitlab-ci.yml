@@ -21,5 +21,7 @@ changeset:
     policy: pull
     paths:
       - node_modules
+  before_script:
+    - git fetch origin dev
   script:
     - npx changeset status --since=origin/dev

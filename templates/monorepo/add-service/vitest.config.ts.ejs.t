@@ -7,8 +7,8 @@ export default defineConfig({
   test: {
     coverage: {
       all: true,
-      reporter: ['cobertura', 'text', 'text-summary'],
       provider: 'istanbul',
+      reporter: 'cobertura',
     },
     passWithNoTests: true,
     poolOptions: {

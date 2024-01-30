@@ -15,11 +15,11 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "lint": "eslint --fix . && npm run prettify",
 <% } -%>
 <% if (features.testing) { -%>
-    "test": "vitest",
-    "coverage": "vitest run --coverage",
+    "test": "NODE_OPTIONS=--loader=extensionless vitest",
+    "coverage": "npm run test -- --coverage",
 <% } -%>
-    "start": "node --watch --experimental-specifier-resolution=node --loader ./ts-node-esm-loader.js ./src/index.ts",
-    "start:prod": "node --experimental-specifier-resolution=node ./dist/index.js",
+    "start": "node --watch --loader ./ts-node-esm-loader.js --loader extensionless ./src/index.ts",
+    "start:prod": "node --loader extensionless ./dist/index.js",
     "build": "rimraf dist && tsc",
 <% if (features.database) { -%>
     "typeorm": "NODE_OPTIONS=--experimental-specifier-resolution=node typeorm-ts-node-esm",
@@ -60,6 +60,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "@vitest/coverage-istanbul": "^1.2.2",
     "vitest": "^1.2.2",
 <% } -%>
+    "extensionless": "^1.9.6",
     "@types/config": "^0.0.41",
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3",

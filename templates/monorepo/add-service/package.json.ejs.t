@@ -56,8 +56,8 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
 <% if (features.testing) { -%>
     "@vitest/coverage-istanbul": "^1.2.2",
     "vitest": "^1.2.2",
-    "extensionless": "^1.9.6",
 <% } -%>
+    "extensionless": "^1.9.6",
     "@types/node": "^20.11.9",
     "typescript": "^5.3.3",
 <% if (features.express) { -%>

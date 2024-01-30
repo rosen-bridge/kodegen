@@ -59,8 +59,8 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
 <% if (features.testing) { -%>
     "@vitest/coverage-istanbul": "^1.2.2",
     "vitest": "^1.2.2",
-    "extensionless": "^1.9.6",
 <% } -%>
+    "extensionless": "^1.9.6",
     "@types/config": "^0.0.41",
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3",

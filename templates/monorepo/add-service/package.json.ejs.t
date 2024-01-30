@@ -16,16 +16,16 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
     "lint": "eslint --fix . && npm run prettify",
 <% } -%>
 <% if (features.testing) { -%>
-    "test": "vitest",
-    "coverage": "vitest run --coverage",
+    "test": "NODE_OPTIONS=--loader=extensionless vitest",
+    "coverage": "npm run test -- --coverage",
 <% } -%>
 <% if (features.database) { -%>
     "typeorm": "NODE_OPTIONS=--experimental-specifier-resolution=node typeorm-ts-node-esm",
     "typeorm:generate": "npm run typeorm migration:generate ./src/db/migrations/migration -- -p -d ./src/data-source.ts",
     "typeorm:migrate": "npm run typeorm migration:run -- -d ./src/data-source.ts",
 <% } -%>
-    "start": "node --watch --experimental-specifier-resolution=node --loader ./ts-node-esm-loader.js ./src/index.ts",
-    "start:prod": "node --experimental-specifier-resolution=node ./dist/index.js",
+    "start": "node --watch --loader ./ts-node-esm-loader.js --loader extensionless ./src/index.ts",
+    "start:prod": "node --loader extensionless ./dist/index.js",
     "type-check": "tsc --noEmit"
   },
   "author": "<%= author %>",
@@ -56,6 +56,7 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
 <% if (features.testing) { -%>
     "@vitest/coverage-istanbul": "^1.2.2",
     "vitest": "^1.2.2",
+    "extensionless": "^1.9.6",
 <% } -%>
     "@types/node": "^20.11.9",
     "typescript": "^5.3.3",

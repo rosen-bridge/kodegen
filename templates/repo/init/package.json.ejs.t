@@ -35,8 +35,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "express": "^4.18.1",
 <% } -%>
 <% if (features.logging) { -%>
-    "winston": "^3.8.2",
-    "winston-daily-rotate-file": "^4.7.1",
+    "@rosen-bridge/winston-logger": "^0.2.1",
 <% } -%>
 <% if (features.database) { -%>
     "reflect-metadata": "^0.1.13",

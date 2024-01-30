@@ -21,8 +21,7 @@ to: ./<%= projectName %>/tsconfig.json
 <% if (features.database) { -%>
       "@/entities": ["./src/db/entities"],
 <% } -%>
-      "@/types": ["./src/types"],
-      "@/utils/*": ["./src/utils/*"]
+      "@/types": ["./src/types"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,

@@ -10,6 +10,9 @@ export default defineConfig({
       provider: 'istanbul',
       reporter: 'cobertura',
     },
+<% if (features.logging) { -%>
+    setupFiles: ['./tests/setup.ts'],
+<% } -%>
     passWithNoTests: true,
     poolOptions: {
       threads: {

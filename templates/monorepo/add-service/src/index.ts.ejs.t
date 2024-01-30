@@ -1,7 +1,7 @@
 ---
 to: ./<%= servicePath %>/src/index.ts
 ---
-<% if (features.database) { -%>
+<% if (features.database || features.logging) { -%>
 import './bootstrap';
 <% } -%>
 

@@ -1,3 +1,3 @@
 ---
-to: "<%= features.testing ? `./${packagePath}/tests/.gitkeep` : null %>"
+to: "<%= features.testing && !features.logging ? `./${servicePath}/tests/.gitkeep` : null %>"
 ---

@@ -4,8 +4,11 @@ to: ./<%= monorepoName %>/tsconfig.base.json
 {
   "compilerOptions": {
     "allowJs": false,
+    "declaration": true,
+    "declarationMap": true,
     "esModuleInterop": true,
     "inlineSourceMap": true,
+    "inlineSources": true,
     "isolatedModules": false,
     "module": "esnext",
     "moduleResolution": "node",

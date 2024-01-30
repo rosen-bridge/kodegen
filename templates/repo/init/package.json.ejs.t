@@ -14,6 +14,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "prettify": "prettier --write . --ignore-path ./.gitignore",
     "lint": "eslint --fix . && npm run prettify",
 <% } -%>
+    "prepare": "husky install",
 <% if (features.testing) { -%>
     "test": "NODE_OPTIONS=--loader=extensionless vitest",
     "coverage": "npm run test -- --coverage",

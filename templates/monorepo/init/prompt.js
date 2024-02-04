@@ -19,6 +19,10 @@ module.exports = [
         name: 'testing',
         message: 'Testing (with coverage support)',
       },
+      {
+        name: 'changesets',
+        message: 'Changesets',
+      },
     ],
     name: 'features',
     message:

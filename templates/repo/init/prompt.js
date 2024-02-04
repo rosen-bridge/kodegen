@@ -42,6 +42,10 @@ module.exports = [
         message: 'Database (with TypeORM)',
       },
       {
+        name: 'changesets',
+        message: 'Changesets',
+      },
+      {
         name: 'prerelease',
         message: 'Prerelease on opened merge request (and new commits to open MR)',
       },

@@ -12,5 +12,8 @@
     "@changesets/cli": "^2.27.1",
     "hygen": "^6.2.11"
   },
-  "bin": "./.bin/cli.js"
+  "bin": "./.bin/cli.js",
+  "devDependencies": {
+    "@rosen-bridge/changeset-formatter": "^0.1.0"
+  }
 }

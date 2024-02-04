@@ -13,6 +13,9 @@ stages:
 <% if (features.testing) { -%>
   - test
 <% } -%>
+<% if (features.changesets) { -%>
+  - changeset
+<% } -%>
 
 installation:
   stage: installation
@@ -81,4 +84,20 @@ test:
       coverage_report:
         coverage_format: cobertura
         path: '**/coverage/cobertura-coverage.xml'
+<% } -%>
+<% if (features.changesets) { -%>
+
+changeset:
+  stage: changeset
+  cache:
+    key: $CI_COMMIT_REF_NAME
+    policy: pull
+    paths:
+      - node_modules
+      - '**/node_modules'
+      - '**/dist'
+  before_script:
+    - git fetch origin dev
+  script:
+    - npx changeset status --since=origin/dev
 <% } -%>

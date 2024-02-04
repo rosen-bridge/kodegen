@@ -1,5 +1,11 @@
 # kodegen
 
+## 0.3.0
+
+### Minor Changes
+
+- add changeset support
+
 ## 0.2.0
 
 ### Minor Changes

@@ -12,11 +12,11 @@ stages:
 <% if (features.testing) { -%>
   - test
 <% } -%>
-<% if (features.changesets) { -%>
-  - changeset
-<% } -%>
 <% if (features.prerelease) { -%>
   - publish
+<% } -%>
+<% if (features.changesets) { -%>
+  - changeset
 <% } -%>
 
 installation:
@@ -68,20 +68,6 @@ test:
         coverage_format: cobertura
         path: coverage/cobertura-coverage.xml
 <% } -%>
-<% if (features.changesets) { -%>
-
-changeset:
-  stage: changeset
-  cache:
-    key: $CI_COMMIT_REF_NAME
-    policy: pull
-    paths:
-      - node_modules
-  before_script:
-    - git fetch origin dev
-  script:
-    - npx changeset status --since=origin/dev
-<% } -%>
 <% if (features.prerelease) { -%>
 
 publish:
@@ -99,4 +85,18 @@ publish:
     - npm publish
   only:
     - merge_requests
+<% } -%>
+<% if (features.changesets) { -%>
+
+changeset:
+  stage: changeset
+  cache:
+    key: $CI_COMMIT_REF_NAME
+    policy: pull
+    paths:
+      - node_modules
+  before_script:
+    - git fetch origin dev
+  script:
+    - npx changeset status --since=origin/dev
 <% } -%>

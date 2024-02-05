@@ -1,5 +1,17 @@
 # kodegen
 
+## 0.4.0
+
+### Minor Changes
+
+- add "version" npm script if changesets is enabled
+
+### Patch Changes
+
+- in "monorepo add-package", run test before publish if testing is enabled
+- change all initial versions to 0.0.0
+- do not use watch mode for running tests before publish
+
 ## 0.3.0
 
 ### Minor Changes

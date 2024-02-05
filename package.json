@@ -4,6 +4,7 @@
   "description": "A code generator for js/ts projects",
   "main": "index.js",
   "scripts": {
+    "version": "npx changeset version && npm i",
     "release": "npm publish --access public"
   },
   "author": "Rosen Team",

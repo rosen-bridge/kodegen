@@ -4,7 +4,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
 ---
 {
   "name": "<%= h.inflection.dasherize(projectName) %>",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "<%= description %>",
   "repository": "<%= repo %>",
   "main": "dist/index.js",
@@ -22,6 +22,9 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "start": "node --watch --loader ./ts-node-esm-loader.js --loader extensionless ./src/index.ts",
     "start:prod": "node --loader extensionless ./dist/index.js",
     "build": "rimraf dist && tsc",
+<% if (features.changesets) { -%>
+    "version": "npx changeset version && npm i",
+<% } -%>
 <% if (features.database) { -%>
     "typeorm": "NODE_OPTIONS=--experimental-specifier-resolution=node typeorm-ts-node-esm",
     "typeorm:generate": "npm run typeorm migration:generate ./src/db/migrations/migration -- -p -d ./src/data-source.ts",

@@ -1,9 +1,10 @@
 {
   "name": "kodegen",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A code generator for js/ts projects",
   "main": "index.js",
   "scripts": {
+    "version": "npx changeset version && npm i",
     "release": "npm publish --access public"
   },
   "author": "Rosen Team",

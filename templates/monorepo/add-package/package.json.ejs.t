@@ -21,7 +21,11 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
 <% } -%>
     "build": "tsc --build tsconfig.build.json",
     "type-check": "tsc --noEmit",
+<% if (features.testing) { -%>
+    "release": "npm run test && npm run build && npm publish --access public"
+<% } else { -%>
     "release": "npm run build && npm publish --access public"
+<% } -%>
   },
   "author": "<%= author %>",
   "license": "GPL-3.0",

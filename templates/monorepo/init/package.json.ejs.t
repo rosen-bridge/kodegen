@@ -21,6 +21,9 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
     "lint": "npm run lint --workspaces",
 <% } -%>
     "prepare": "husky install",
+<% if (features.changesets) { -%>
+    "version": "npx changeset version && npm i",
+<% } -%>
     "release": "npm run release --workspaces",
     "type-check": "npm run type-check --workspaces"
   },

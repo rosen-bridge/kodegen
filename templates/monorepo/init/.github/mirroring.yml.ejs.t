@@ -1,5 +1,5 @@
 ---
-to: ./<%= monorepoName %>/.github/mirroring.yml
+to: ./<%= monorepoName %>/.github/workflows/mirroring.yml
 ---
 name: Mirroring
 

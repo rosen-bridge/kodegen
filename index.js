@@ -4,6 +4,13 @@ const path = require('path');
 const defaultTemplates = path.join(__dirname, 'templates');
 const execa = require('execa');
 
+const packageJson = require('./package.json');
+
+if (['--version', '-v'].includes(process.argv[2])) {
+  console.log(packageJson.version);
+  process.exit(0);
+}
+
 runner(process.argv.slice(2), {
   templates: defaultTemplates,
   cwd: process.cwd(),

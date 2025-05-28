@@ -60,8 +60,8 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "prettier": "^3.2.4",
 <% } -%>
 <% if (features.testing) { -%>
-    "@vitest/coverage-istanbul": "^1.2.2",
-    "vitest": "^1.2.2",
+    "@vitest/coverage-istanbul": "^3.1.4",
+    "vitest": "^3.1.4",
 <% } -%>
 <% if (features.changesets) { -%>
     "@changesets/cli": "^2.27.1",

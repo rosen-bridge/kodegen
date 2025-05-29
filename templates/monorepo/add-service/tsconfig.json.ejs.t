@@ -16,8 +16,5 @@ to: ./<%= servicePath %>/tsconfig.json
     "experimentalDecorators": true,
 <% } -%>
   },
-  "include": ["src"],
-  "ts-node": {
-    "esm": true
-  }
+  "include": ["src"]
 }

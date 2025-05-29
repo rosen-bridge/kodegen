@@ -16,7 +16,7 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
     "lint": "eslint --fix . && npm run prettify",
 <% } -%>
 <% if (features.testing) { -%>
-    "test": "NODE_OPTIONS=--loader=extensionless vitest",
+    "test": "NODE_OPTIONS='--import tsx' vitest",
     "coverage": "npm run test -- --coverage",
 <% } -%>
     "build": "tsc --build tsconfig.build.json",
@@ -40,7 +40,7 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
 <% if (features.testing) { -%>
     "@vitest/coverage-istanbul": "^3.1.4",
     "vitest": "^3.1.4",
-    "extensionless": "^1.9.6",
+    "tsx": "^4.19.4",
 <% } -%>
     "@types/node": "^20.11.9",
     "typescript": "^5.3.3"

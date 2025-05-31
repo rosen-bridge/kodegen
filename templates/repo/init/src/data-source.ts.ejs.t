@@ -4,7 +4,7 @@ to: "<%= features.database ? `./${projectName}/src/data-source.ts` : null %>"
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { DataSource } from 'typeorm';
+import { DataSource } from '@rosen-bridge/extended-typeorm';
 
 import entities from './db/entities';
 

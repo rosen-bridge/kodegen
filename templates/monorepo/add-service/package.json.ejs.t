@@ -39,7 +39,7 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
 <% if (features.database) { -%>
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.8",
-    "typeorm": "^0.3.6",
+    "@rosen-bridge/extended-typeorm": "^0.1.0",
 <% } -%>
     "config": "^3.3.7",
     "tsx": "^4.19.4"

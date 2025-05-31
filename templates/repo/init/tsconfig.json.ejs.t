@@ -29,7 +29,4 @@ to: ./<%= projectName %>/tsconfig.json
     "target": "esnext"
   },
   "include": ["./**/*.ts"],
-  "ts-node": {
-    "esm": true
-  }
 }

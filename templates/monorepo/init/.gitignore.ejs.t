@@ -85,6 +85,7 @@ web_modules/
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache
+.idea
 
 # Next.js build output
 .next

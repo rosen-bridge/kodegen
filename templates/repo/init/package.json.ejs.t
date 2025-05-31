@@ -7,7 +7,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
   "version": "0.0.0",
   "description": "<%= description %>",
   "repository": "<%= repo %>",
-  "main": "dist/index.js",
+  "main": "src/index.ts",
   "type": "module",
   "scripts": {
 <% if (features.prettierEslint) { -%>
@@ -16,17 +16,17 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
 <% } -%>
     "prepare": "husky install",
 <% if (features.testing) { -%>
-    "test": "NODE_OPTIONS=--loader=extensionless vitest",
+    "test": "NODE_OPTIONS='--import tsx' vitest",
     "coverage": "npm run test -- --coverage",
 <% } -%>
-    "start": "node --watch --loader ./ts-node-esm-loader.js --loader extensionless ./src/index.ts",
-    "start:prod": "node --loader extensionless ./dist/index.js",
+    "start:dev": "tsx watch ./src/index.ts",
+    "start": "tsx ./src/index.ts",
     "build": "rimraf dist && tsc",
 <% if (features.changesets) { -%>
     "version": "npx changeset version && npm i",
 <% } -%>
 <% if (features.database) { -%>
-    "typeorm": "NODE_OPTIONS=--experimental-specifier-resolution=node typeorm-ts-node-esm",
+    "typeorm": "NODE_OPTIONS='--import tsx' typeorm",
     "typeorm:generate": "npm run typeorm migration:generate ./src/db/migrations/migration -- -p -d ./src/data-source.ts",
     "typeorm:migrate": "npm run typeorm migration:run -- -d ./src/data-source.ts",
 <% } -%>
@@ -46,7 +46,8 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "sqlite3": "^5.0.8",
     "typeorm": "^0.3.6",
 <% } -%>
-    "config": "^3.3.7"
+    "config": "^3.3.7",
+    "tsx": "^4.19.4"
   },
   "devDependencies": {
 <% if (features.express) { -%>
@@ -67,13 +68,10 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "@changesets/cli": "^2.27.1",
     "@rosen-bridge/changeset-formatter": "^0.1.0",
 <% } -%>
-    "extensionless": "^1.9.6",
     "@types/config": "^0.0.41",
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3",
-    "ts-node": "^10.7.0",
     "@types/node": "^20.11.9",
-    "tsconfig-paths": "^4.1.2",
     "typescript": "^5.3.3"
   },
   "engines": {

@@ -1,5 +1,18 @@
 # kodegen
 
+## 0.5.0
+
+### Minor Changes
+
+- Replace tsx tools instead of extensionless
+- add --version argument
+- Update vitest version to v3.1.4
+
+### Patch Changes
+
+- Install `@rosen-bridge/extended-typeorm` package instead of official typeorm package!
+- fix mirroring github action file path
+
 ## 0.4.0
 
 ### Minor Changes

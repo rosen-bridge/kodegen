@@ -13,6 +13,6 @@ to: ./<%= monorepoName %>/.gitlab/issue_templates/default.md
 
 <TBD / N/A>
 
-**Requierd Unit Tests:**
+**Required Unit Tests:**
 
 <TBD / N/A>

@@ -9,6 +9,10 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
   "repository": "<%= repo %>",
   "main": "src/index.ts",
   "type": "module",
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
   "scripts": {
 <% if (features.prettierEslint) { -%>
     "prettify": "prettier --write . --ignore-path ./.gitignore",

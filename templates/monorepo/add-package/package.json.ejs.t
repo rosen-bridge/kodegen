@@ -10,6 +10,10 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
   "scripts": {
 <% if (features.prettierEslint) { -%>
     "prettify": "prettier --write . --ignore-path ./.gitignore",

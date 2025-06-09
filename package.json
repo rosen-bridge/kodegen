@@ -15,6 +15,6 @@
   },
   "bin": "./.bin/cli.js",
   "devDependencies": {
-    "@rosen-bridge/changeset-formatter": "^0.1.0"
+    "@rosen-bridge/changeset-formatter": "^1.0.0"
   }
 }

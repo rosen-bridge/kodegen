@@ -66,7 +66,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
 <% } -%>
 <% if (features.changesets) { -%>
     "@changesets/cli": "^2.27.1",
-    "@rosen-bridge/changeset-formatter": "^0.1.0",
+    "@rosen-bridge/changeset-formatter": "^1.0.0",
 <% } -%>
     "@types/config": "^0.0.41",
     "husky": "^8.0.0",

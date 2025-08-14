@@ -1,5 +1,16 @@
 # kodegen
 
+## 0.6.0
+
+### Minor Changes
+
+- Update `@rosen-bridge/changeset-formatter` to v1
+
+### Patch Changes
+
+- Fix typo in issue templates
+- Fix uploading file while publishing a package
+
 ## 0.5.0
 
 ### Minor Changes

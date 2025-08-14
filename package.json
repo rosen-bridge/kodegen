@@ -1,6 +1,6 @@
 {
   "name": "kodegen",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A code generator for js/ts projects",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "release": "npm publish --access public"
   },
   "author": "Rosen Team",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "dependencies": {
     "@changesets/cli": "^2.27.1",
     "hygen": "^6.2.11"

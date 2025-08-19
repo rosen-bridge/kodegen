@@ -2,7 +2,7 @@
 to: "<%= features.prettierEslint ? `./${monorepoName}/.eslintrc.json` : null %>"
 ---
 
-{
+  {
   "root": true,
   "env": {
     "node": true
@@ -36,5 +36,4 @@ to: "<%= features.prettierEslint ? `./${monorepoName}/.eslintrc.json` : null %>"
     "**/build/**"
   ]
 }
-
 

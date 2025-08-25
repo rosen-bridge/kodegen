@@ -31,8 +31,6 @@ installation:
       - node_modules
   script:
     - npm ci
-  rules:
-    - if: $CI_MERGE_REQUEST_ID
 
 <% if (features.depcheck) { -%>
 depcheck:
@@ -44,10 +42,8 @@ depcheck:
       - node_modules
       - '**/node_modules'
   script:
-    - git fetch origin $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
-    - npx lint-staged --diff origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME...HEAD
-  rules:
-    - if: $CI_MERGE_REQUEST_ID
+    - git fetch origin $CI_DEFAULT_BRANCH
+    - npx lint-staged --diff origin/$CI_DEFAULT_BRANCH...HEAD
 <% } -%>
 
 type-check:
@@ -59,8 +55,6 @@ type-check:
       - node_modules
   script:
     - npm run type-check
-  rules:
-    - if: $CI_MERGE_REQUEST_ID
 <% if (features.prettierEslint) { -%>
 
 lint:
@@ -72,8 +66,6 @@ lint:
       - node_modules
   script:
     - npm run lint
-  rules:
-    - if: $CI_MERGE_REQUEST_ID
 <% } -%>
 <% if (features.testing) { -%>
 
@@ -92,8 +84,6 @@ test:
       coverage_report:
         coverage_format: cobertura
         path: coverage/cobertura-coverage.xml
-  rules:
-    - if: $CI_MERGE_REQUEST_ID
 <% } -%>
 <% if (features.prerelease) { -%>
 
@@ -112,8 +102,6 @@ publish:
     - npm publish
   only:
     - merge_requests
-  rules:
-    - if: $CI_MERGE_REQUEST_ID
 <% } -%>
 <% if (features.changesets) { -%>
 
@@ -128,6 +116,4 @@ changeset:
     - git fetch origin dev
   script:
     - npx changeset status --since=origin/dev
-  rules:
-    - if: $CI_MERGE_REQUEST_ID
 <% } -%>

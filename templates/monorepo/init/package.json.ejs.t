@@ -39,6 +39,9 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
     "@changesets/cli": "^2.27.1",
     "@rosen-bridge/changeset-formatter": "^1.0.0",
 <% } -%>
+<% if (features.depcheck) { -%>
+    "depcheck": "^1.4.7",
+<% } -%>
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3"
   }

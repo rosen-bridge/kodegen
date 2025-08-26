@@ -71,6 +71,9 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "@types/config": "^0.0.41",
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3",
+<% if (features.depcheck) { -%>
+    "depcheck": "1.4.7",
+<% } -%>
     "@types/node": "^20.11.9",
     "typescript": "^5.3.3"
   },

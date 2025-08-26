@@ -22,6 +22,10 @@ module.exports = [
         message: 'Prettier and Eslint',
       },
       {
+        name: 'depcheck',
+        message: 'Dependencies check',
+      },
+      {
         name: 'express',
         message: 'Express',
       },

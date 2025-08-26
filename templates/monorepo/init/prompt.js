@@ -23,6 +23,10 @@ module.exports = [
         name: 'changesets',
         message: 'Changesets',
       },
+      {
+        name: 'depcheck',
+        message: 'Dependencies check',
+      },
     ],
     name: 'features',
     message:

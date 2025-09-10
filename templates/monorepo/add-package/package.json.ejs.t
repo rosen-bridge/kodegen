@@ -17,7 +17,9 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
   "scripts": {
 <% if (features.prettierEslint) { -%>
     "prettify": "prettier --write . --ignore-path ./.gitignore",
+    "prettify:check": "prettier --check . --ignore-path ./.gitignore",
     "lint": "eslint --fix . && npm run prettify",
+    "lint:ci": "eslint . && npm run prettify:check",
 <% } -%>
 <% if (features.testing) { -%>
     "test": "NODE_OPTIONS='--import tsx' vitest",

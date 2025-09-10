@@ -12,7 +12,9 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
   "scripts": {
 <% if (features.prettierEslint) { -%>
     "prettify": "prettier --write . --ignore-path ./.gitignore",
+    "prettify:check": "prettier --check . --ignore-path ./.gitignore",
     "lint": "eslint --fix . && npm run prettify",
+    "lint:ci": "eslint . && npm run prettify:check",
 <% } -%>
     "prepare": "husky install",
 <% if (features.testing) { -%>

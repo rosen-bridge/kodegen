@@ -53,7 +53,8 @@ export default [
       'react-refresh': reactRefresh,
       'react-hooks': reactHooks,
       <% } -%>
-    },<% if (features.eslintFeaturesReact) { -%>
+    },
+    <% if (features.eslintFeaturesReact) { -%>
     rules: {
       // React-Specific Rules
       'react-refresh/only-export-components': 'warn',
@@ -61,7 +62,8 @@ export default [
       // vitest Rules
       ...vitestPlugin.configs.recommended.rules
       <% } -%>
-    }<% } -%>
+    }
+    <% } -%>
   },
   // Integrate Prettier for Formatting
   prettier,

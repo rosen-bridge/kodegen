@@ -6,7 +6,7 @@ to: ./<%= packagePath %>/tsconfig.build.json
   "compilerOptions": {
     "rootDir": "./lib"
   },
-<% if (features.testing) { -%>
+<% if (testing) { -%>
   "exclude": ["tests", "vitest.config.ts"],
 <% } else { -%>
   "exclude": ["tests"],

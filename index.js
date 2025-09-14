@@ -1,5 +1,6 @@
 const { runner } = require('hygen');
 const Logger = require('hygen/dist/logger');
+const fs = require('fs');
 const path = require('path');
 const defaultTemplates = path.join(__dirname, 'templates');
 const execa = require('execa');
@@ -21,4 +22,18 @@ runner(process.argv.slice(2), {
     return execa(action, undefined, { shell: true });
   },
   debug: true,
+  helpers: {
+    rootHasEslint: (() => {
+      const configFiles = [
+        'eslint.config.js',
+        'eslint.config.mjs',
+        '.eslintrc.js',
+        '.eslintrc.cjs',
+        '.eslintrc.json',
+        '.eslintrc.yaml',
+        '.eslintrc.yml',
+      ];
+      return configFiles.some(file => fs.existsSync(path.join(process.cwd(), file)));
+    })()
+  }
 });

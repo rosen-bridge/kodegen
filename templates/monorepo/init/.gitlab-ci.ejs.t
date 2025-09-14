@@ -10,7 +10,7 @@ stages:
 <% } -%>
   - build
   - type-check
-<% if (features.prettierEslint) { -%>
+<% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
   - lint
 <% } -%>
 <% if (features.testing) { -%>
@@ -68,7 +68,7 @@ build:
       - '**/dist'
   script:
     - npm run build
-<% if (features.prettierEslint) { -%>
+<% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
 
 lint:
   stage: lint

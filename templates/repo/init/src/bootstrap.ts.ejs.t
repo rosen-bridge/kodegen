@@ -5,6 +5,7 @@ to: "<%= features.database || features.logging ? `./${projectName}/src/bootstrap
 import 'reflect-metadata';
 <% } -%>
 <% if (features.logging) { -%>
+import { CallbackLoggerFactory } from '@rosen-bridge/callback-logger';
 import WinstonLogger from '@rosen-bridge/winston-logger';
 
 import {
@@ -14,11 +15,11 @@ import {
   logLevel,
 } from './configs';
 
-await WinstonLogger.init([{
-  type: 'file',
-  maxSize: maxLogSize,
-  maxFiles: maxLogFilesCount,
-  path: logsPath,
-  level: logLevel,
-}]);
+CallbackLoggerFactory.init(new WinstonLogger([{
+    type: 'file',
+    path: logsPath,
+    maxSize: maxLogSize,
+    maxFiles: maxLogFilesCount,
+    level: logLevel
+}]));
 <% } -%>

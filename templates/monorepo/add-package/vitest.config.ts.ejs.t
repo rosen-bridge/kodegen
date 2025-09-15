@@ -1,5 +1,5 @@
 ---
-to: "<%= features.testing ? `./${packagePath}/vitest.config.ts` : null %>"
+to: "<%= testing ? `./${packagePath}/vitest.config.ts` : null %>"
 ---
 import { defineConfig } from 'vitest/config';
 

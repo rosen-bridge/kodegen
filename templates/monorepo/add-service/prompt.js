@@ -30,10 +30,6 @@ module.exports = async ({ prompter }) => {
       type: 'multiselect',
       choices: [
         {
-          name: 'prettierEslint',
-          message: 'Prettier and Eslint',
-        },
-        {
           name: 'express',
           message: 'Express',
         },

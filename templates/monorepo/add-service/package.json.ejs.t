@@ -14,7 +14,7 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
     "CHANGELOG.md"
   ],
   "scripts": {
-<% if (features.prettierEslint) { -%>
+<% if (h.rootHasEslint) { -%>
     "prettify": "prettier --write . --ignore-path ./.gitignore",
     "lint": "eslint --fix . && npm run prettify",
 <% } -%>
@@ -38,25 +38,18 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
     "express": "^4.18.1",
 <% } -%>
 <% if (features.logging) { -%>
-    "@rosen-bridge/winston-logger": "^0.2.1",
+    "@rosen-bridge/callback-logger": "0.2.0",
+    "@rosen-bridge/winston-logger": "1.1.0",
 <% } -%>
 <% if (features.database) { -%>
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.8",
-    "@rosen-bridge/extended-typeorm": "^0.1.0",
+    "@rosen-bridge/extended-typeorm": "^0.2.1",
 <% } -%>
     "config": "^3.3.7",
     "tsx": "^4.19.4"
   },
   "devDependencies": {
-<% if (features.prettierEslint) { -%>
-    "@typescript-eslint/eslint-plugin": "^8.33.0",
-    "@typescript-eslint/parser": "^8.33.0",
-    "eslint": "^9.28.0",
-    "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-check-file": "^3.2.0",
-    "prettier": "^3.2.4",
-<% } -%>
 <% if (features.testing) { -%>
     "@vitest/coverage-istanbul": "^3.1.4",
     "vitest": "^3.1.4",

@@ -5,13 +5,13 @@ import express from 'express';
 
 import { apiPort, apiHost } from '@/configs';
 <% if (features.logging) { -%>
-import WinstonLogger from '@rosen-bridge/winston-logger';
+import { CallbackLoggerFactory } from '@rosen-bridge/callback-logger';
 <% } -%>
 
 import router from './router/v1';
 
 <% if (features.logging) { -%>
-const logger = WinstonLogger.getInstance().getLogger(import.meta.url);
+const logger = CallbackLoggerFactory.getInstance().getLogger(import.meta.url);
 <% } -%>
 
 const app = express();

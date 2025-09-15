@@ -5,9 +5,12 @@ image: node:20.11.0
 
 stages:
   - installation
+<% if (features.depcheck) { -%>
+  - depcheck
+<% } -%>
   - build
   - type-check
-<% if (features.prettierEslint) { -%>
+<% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
   - lint
 <% } -%>
 <% if (features.testing) { -%>
@@ -27,6 +30,20 @@ installation:
       - '**/node_modules'
   script:
     - npm ci
+
+<% if (features.depcheck) { -%>
+depcheck:
+  stage: depcheck
+  cache:
+    key: $CI_COMMIT_REF_NAME
+    policy: pull
+    paths:
+      - node_modules
+      - '**/node_modules'
+  script:
+    - git fetch origin $CI_DEFAULT_BRANCH
+    - npx lint-staged --diff origin/$CI_DEFAULT_BRANCH...HEAD
+<% } -%>
 
 type-check:
   stage: type-check
@@ -51,7 +68,7 @@ build:
       - '**/dist'
   script:
     - npm run build
-<% if (features.prettierEslint) { -%>
+<% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
 
 lint:
   stage: lint

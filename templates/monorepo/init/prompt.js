@@ -8,8 +8,13 @@ module.exports = [
     type: 'multiselect',
     choices: [
       {
-        name: 'prettierEslint',
-        message: 'Prettier and Eslint',
+        type: 'multiselect',
+        message: 'select eslint and prettier features you want to enable:',
+        choices: [
+          { name: 'eslintFeaturesNode', message: 'node-specific globals' },
+          { name: 'eslintFeaturesBrowser', message: 'browser-specific globals' },
+          { name: 'eslintFeaturesReact', message: 'react-specific rules and plugins' },
+        ],
       },
       {
         name: 'ciCd',
@@ -22,6 +27,10 @@ module.exports = [
       {
         name: 'changesets',
         message: 'Changesets',
+      },
+      {
+        name: 'depcheck',
+        message: 'Dependencies check',
       },
     ],
     name: 'features',

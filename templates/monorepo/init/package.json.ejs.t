@@ -40,7 +40,8 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     <% } -%>
-    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-check-file": "^3.2.0",
     "prettier": "^3.2.4",
 <% } -%>
 <% if (features.changesets) { -%>

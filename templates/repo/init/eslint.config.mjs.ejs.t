@@ -4,6 +4,7 @@ to: "<%= (features.eslintFeaturesNode || features.eslintFeaturesBrowser || featu
 import pluginJs from '@eslint/js';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
+import pluginCheckFile from 'eslint-plugin-check-file';
 <% if (features.testing) { -%>
 import vitestPlugin from '@vitest/eslint-plugin';
 <% } -%>
@@ -45,6 +46,7 @@ export default [
     },
     plugins: {
       '@typescript-eslint': typescriptEslint,
+      'check-file': pluginCheckFile,
 <% if (features.testing) { -%>
       'vitest': vitestPlugin,
 <% } -%>
@@ -55,6 +57,11 @@ export default [
 <% } -%>
     },
     rules: {
+      'check-file/filename-naming-convention': [
+        'error',
+        { '**/*.{js,ts,jsx,tsx}': 'CAMEL_CASE' },
+        { ignoreMiddleExtensions: true },
+      ],
 <% if (features.eslintFeaturesReact) { -%>
       // React-Specific Rules
       'react-refresh/only-export-components': 'warn',

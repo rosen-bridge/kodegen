@@ -30,40 +30,40 @@ export default [
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {
-        <% if (features.eslintFeaturesNode) { -%>
+<% if (features.eslintFeaturesNode) { -%>
         // Node-Specific Globals
         ...globals.node,
-        <% } -%>
-        <% if (features.eslintFeaturesBrowser) { -%>
+<% } -%>
+<% if (features.eslintFeaturesBrowser) { -%>
         // Browser-Specific Globals
         ...globals.browser,
-        <% } -%>
-        <% if (features.testing) { -%>
+<% } -%>
+<% if (features.testing) { -%>
         ...vitestPlugin.environments.env.globals,
-        <% } -%>
+<% } -%>
       },
     },
     plugins: {
       '@typescript-eslint': typescriptEslint,
-      <% if (features.testing) { -%>
+<% if (features.testing) { -%>
       'vitest': vitestPlugin,
-      <% } -%>
-      <% if (features.eslintFeaturesReact) { -%>
+<% } -%>
+<% if (features.eslintFeaturesReact) { -%>
       // React-Specific Plugins
       'react-refresh': reactRefresh,
       'react-hooks': reactHooks,
-      <% } -%>
+<% } -%>
     },
-    <% if (features.eslintFeaturesReact) { -%>
     rules: {
+<% if (features.eslintFeaturesReact) { -%>
       // React-Specific Rules
       'react-refresh/only-export-components': 'warn',
-      <% if (features.testing) { -%>
+<% } -%>
+<% if (features.testing) { -%>
       // vitest Rules
       ...vitestPlugin.configs.recommended.rules
-      <% } -%>
+<% } -%>
     }
-    <% } -%>
   },
   // Integrate Prettier for Formatting
   prettier,

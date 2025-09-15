@@ -65,7 +65,7 @@ lint:
     paths:
       - node_modules
   script:
-    - npm run lint:ci
+    - npm run lint:check
 <% } -%>
 <% if (features.testing) { -%>
 

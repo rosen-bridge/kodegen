@@ -19,7 +19,7 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
 <% } -%>
 <% if (features.prettierEslint) { -%>
     "lint": "npm run lint --workspaces",
-    "lint:ci": "npm run lint:ci --workspaces",
+    "lint:check": "npm run lint:check --workspaces",
 <% } -%>
     "prepare": "husky install",
 <% if (features.changesets) { -%>

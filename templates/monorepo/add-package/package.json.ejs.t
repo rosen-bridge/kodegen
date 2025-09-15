@@ -15,19 +15,19 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
     "CHANGELOG.md"
   ],
   "scripts": {
-<% if (features.prettierEslint) { -%>
+<% if (h.rootHasEslint) { -%>
     "prettify": "prettier --write . --ignore-path ./.gitignore",
     "prettify:check": "prettier --check . --ignore-path ./.gitignore",
     "lint": "eslint --fix . && npm run prettify",
     "lint:check": "eslint . && npm run prettify:check",
 <% } -%>
-<% if (features.testing) { -%>
+<% if (testing) { -%>
     "test": "NODE_OPTIONS='--import tsx' vitest",
     "coverage": "npm run test -- --coverage",
 <% } -%>
     "build": "tsc --build tsconfig.build.json",
     "type-check": "tsc --noEmit",
-<% if (features.testing) { -%>
+<% if (testing) { -%>
     "release": "npm run test -- --run && npm run build && npm publish --access public"
 <% } else { -%>
     "release": "npm run build && npm publish --access public"
@@ -36,14 +36,7 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
   "author": "<%= author %>",
   "license": "GPL-3.0",
   "devDependencies": {
-<% if (features.prettierEslint) { -%>
-    "@typescript-eslint/eslint-plugin": "^6.19.1",
-    "@typescript-eslint/parser": "^6.19.1",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "prettier": "^3.2.4",
-<% } -%>
-<% if (features.testing) { -%>
+<% if (testing) { -%>
     "@vitest/coverage-istanbul": "^3.1.4",
     "vitest": "^3.1.4",
     "tsx": "^4.19.4",

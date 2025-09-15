@@ -9,7 +9,7 @@ stages:
   - depcheck
 <% } -%>
   - type-check
-<% if (features.prettierEslint) { -%>
+<% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
   - lint
 <% } -%>
 <% if (features.testing) { -%>
@@ -55,7 +55,7 @@ type-check:
       - node_modules
   script:
     - npm run type-check
-<% if (features.prettierEslint) { -%>
+<% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
 
 lint:
   stage: lint

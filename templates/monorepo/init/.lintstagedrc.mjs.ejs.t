@@ -4,6 +4,7 @@ to: ./<%= monorepoName %>/.lintstagedrc.mjs
 <% if (features.depcheck) { -%>
 import fs from 'node:fs';
 import path from 'node:path';
+import process from 'node:process';
 
 const perPackage = (resolver) => (files) => {
   return Array.from(
@@ -40,14 +41,14 @@ let tasks = {
 if (!process.env.CI) {
   tasks = {
     '*.ts': () => 'npm run type-check',
-  <% if (features.prettierEslint && features.testing) { -%>
+  <% if ((features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) && features.testing) { -%>
     '*.{js,ts}': ['eslint --fix', 'vitest related --run'],
-  <% } else if (features.prettierEslint) { -%>
+  <% } else if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
     '*.{js,ts}': 'eslint --fix',
   <% } else if (features.testing) { -%>
     '*.{js,ts}': 'vitest related --run',
   <% } -%>
-  <% if (features.prettierEslint) { -%>
+  <% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
     '*': 'prettier --ignore-unknown --write',
   <% } -%>
     ...tasks,

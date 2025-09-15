@@ -15,8 +15,8 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
   ],
   "scripts": {
 <% if (h.rootHasEslint) { -%>
-    "prettify": "prettier --write . --ignore-path ./.gitignore",
-    "prettify:check": "prettier --check . --ignore-path ./.gitignore",
+    "prettify": "prettier --write .<% if (h.rootIgnorePath(servicePath)) { %> --ignore-path <%= h.rootIgnorePath(servicePath) %><% } %>",
+    "prettify:check": "prettier --check .<% if (h.rootIgnorePath(servicePath)) { %> --ignore-path <%= h.rootIgnorePath(servicePath) %><% } %>",
     "lint": "eslint --fix . && npm run prettify",
     "lint:check": "eslint . && npm run prettify:check",
 <% } -%>

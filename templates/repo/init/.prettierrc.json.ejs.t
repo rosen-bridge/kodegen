@@ -1,5 +1,5 @@
 ---
-to: "<%= features.prettierEslint ? `./${projectName}/.prettierrc.json` : null %>"
+to: "<%= (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) ? `./${projectName}/.prettierrc.json` : null %>"
 ---
 {
   "singleQuote": true

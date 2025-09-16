@@ -2,6 +2,11 @@
 to: ./<%= packagePath %>/package.json
 sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
 ---
+<%
+    const normalizedPackagePath = packagePath.replace('./', '');
+    const depth = normalizedPackagePath.split('/').length;
+    relativeIgnorePath = '../'.repeat(depth) + '.gitignore';
+%>
 {
   "name": "<%= h.inflection.dasherize(packageName) %>",
   "version": "0.0.0",
@@ -16,8 +21,8 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
   ],
   "scripts": {
 <% if (h.rootHasEslint) { -%>
-    "prettify": "prettier --write .<% if (h.rootIgnorePath(packagePath)) { %> --ignore-path <%= h.rootIgnorePath(packagePath) %><% } %>",
-    "prettify:check": "prettier --check .<% if (h.rootIgnorePath(packagePath)) { %> --ignore-path <%= h.rootIgnorePath(packagePath) %><% } %>",
+    "prettify": "prettier --write .<% if (relativeIgnorePath) { %> --ignore-path <%= relativeIgnorePath %><% } %>",
+    "prettify:check": "prettier --check .<% if (relativeIgnorePath) { %> --ignore-path <%= relativeIgnorePath %><% } %>",
     "lint": "eslint --fix . && npm run prettify",
     "lint:check": "eslint . && npm run prettify:check",
 <% } -%>

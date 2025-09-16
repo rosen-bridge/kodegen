@@ -34,16 +34,6 @@ runner(process.argv.slice(2), {
         '.eslintrc.yml',
       ];
       return configFiles.some(file => fs.existsSync(path.join(process.cwd(), file)));
-    })(),
-
-    rootIgnorePath: (workspacePath) => {
-      const candidates = ['.prettierignore', '.gitignore'];
-      const rootFile = candidates.find(file => fs.existsSync(path.join(process.cwd(), file)));
-      if (!rootFile) return null;
-      const normalizedWorkspacePath = workspacePath.replace('./', '');
-      const depth = normalizedWorkspacePath.split('/').length;
-      const relativePath = '../'.repeat(depth) + rootFile;
-      return relativePath;
-    }
+    })()
   }
 });

@@ -2,6 +2,11 @@
 to: ./<%= packagePath %>/package.json
 sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
 ---
+<%
+    const normalizedPackagePath = packagePath.replace('./', '');
+    const depth = normalizedPackagePath.split('/').length;
+    relativeIgnorePath = '../'.repeat(depth) + '.gitignore';
+%>
 {
   "name": "<%= h.inflection.dasherize(packageName) %>",
   "version": "0.0.0",
@@ -16,8 +21,10 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
   ],
   "scripts": {
 <% if (h.rootHasEslint) { -%>
-    "prettify": "prettier --write . --ignore-path ./.gitignore",
+    "prettify": "prettier --write .<% if (relativeIgnorePath) { %> --ignore-path <%= relativeIgnorePath %><% } %>",
+    "prettify:check": "prettier --check .<% if (relativeIgnorePath) { %> --ignore-path <%= relativeIgnorePath %><% } %>",
     "lint": "eslint --fix . && npm run prettify",
+    "lint:check": "eslint . && npm run prettify:check",
 <% } -%>
 <% if (testing) { -%>
     "test": "NODE_OPTIONS='--import tsx' vitest",

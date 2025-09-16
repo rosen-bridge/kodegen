@@ -19,6 +19,7 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
 <% } -%>
 <% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
     "lint": "npm run lint --workspaces",
+    "lint:check": "npm run lint:check --workspaces",
 <% } -%>
     "prepare": "husky install",
 <% if (features.changesets) { -%>

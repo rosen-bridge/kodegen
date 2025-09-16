@@ -80,7 +80,7 @@ lint:
       - '**/node_modules'
       - '**/dist'
   script:
-    - npm run lint
+    - npm run lint:check
 <% } -%>
 <% if (features.testing) { -%>
 

@@ -2,4 +2,4 @@
 'kodegen': patch
 ---
 
-Make Prettier and eslint fail on CI when formatting issues exist
+Make prettier and eslint fail on CI when formatting issues exist

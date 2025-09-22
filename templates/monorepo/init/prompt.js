@@ -6,7 +6,7 @@ module.exports = [
   },
   {
     type: 'input',
-    name: 'license',
+    name: 'licenseOwner',
     message: 'Set the copyright owner name for license (e.g., your company or project name)',
     initial: `Rosen Bridge`,
   },

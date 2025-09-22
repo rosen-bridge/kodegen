@@ -61,11 +61,13 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
     "@vitest/coverage-istanbul": "^3.1.4",
     "vitest": "^3.1.4",
 <% } -%>
-    "@types/node": "^20.11.9",
     "typescript": "^5.3.3",
 <% if (features.express) { -%>
     "@types/express": "^4.17.13",
 <% } -%>
     "@types/config": "^0.0.41"
+  },
+  "engines": {
+    "node": ">=22.18.0"
   }
 }

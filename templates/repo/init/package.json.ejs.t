@@ -84,10 +84,10 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
 <% if (features.depcheck) { -%>
     "depcheck": "1.4.7",
 <% } -%>
-    "@types/node": "^20.11.9",
+    "@types/node": "^22.18.0",
     "typescript": "^5.3.3"
   },
   "engines": {
-    "node": ">=20.11.0"
+    "node": ">=22.18.0"
   }
 }

@@ -1,5 +1,11 @@
 # kodegen
 
+## 0.7.1
+
+### Patch Changes
+
+- fix bin command
+
 ## 0.7.0
 
 ### Minor Changes

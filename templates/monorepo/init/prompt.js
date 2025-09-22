@@ -5,6 +5,12 @@ module.exports = [
     message: 'Please enter the name of monorepo',
   },
   {
+    type: 'input',
+    name: 'licenseOwner',
+    message: 'Set the copyright owner name for license (e.g., your company or project name)',
+    initial: `Rosen Bridge`,
+  },
+  {
     type: 'multiselect',
     choices: [
       {

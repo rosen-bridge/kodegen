@@ -15,6 +15,12 @@ module.exports = [
     message: 'Please enter the project repo url',
   },
   {
+    type: 'input',
+    name: 'licenseOwner',
+    message: 'Set the copyright owner name for license (e.g., your company or project name)',
+    initial: `Rosen Bridge`,
+  },
+  {
     type: 'multiselect',
     choices: [
       {

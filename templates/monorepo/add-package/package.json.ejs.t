@@ -39,7 +39,7 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
 <% } -%>
   },
   "author": "<%= author %>",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "devDependencies": {
 <% if (testing) { -%>
     "@vitest/coverage-istanbul": "^3.1.4",

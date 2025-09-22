@@ -1,6 +1,6 @@
 {
   "name": "kodegen",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "A code generator for js/ts projects",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,9 @@
     "@changesets/cli": "^2.27.1",
     "hygen": "^6.2.11"
   },
-  "bin": "./.bin/cli.js",
+  "bin": {
+    "kodegen": ".bin/cli.js"
+  },
   "devDependencies": {
     "@rosen-bridge/changeset-formatter": "^1.1.0"
   }

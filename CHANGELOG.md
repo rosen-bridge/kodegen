@@ -1,5 +1,18 @@
 # kodegen
 
+## 0.7.0
+
+### Minor Changes
+
+- Improved eslint and updated some package versions
+- Update node version to 22.18.0
+- add depcheck to pipeline and precommit hooks
+- Add MIT license file
+
+### Patch Changes
+
+- Make prettier and eslint fail on CI when formatting issues exist
+
 ## 0.6.0
 
 ### Minor Changes

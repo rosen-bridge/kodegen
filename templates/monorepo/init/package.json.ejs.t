@@ -55,5 +55,8 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
 <% } -%>
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3"
+  },
+  "engines": {
+    "node": ">=22.18.0"
   }
 }

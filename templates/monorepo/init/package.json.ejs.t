@@ -29,6 +29,7 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
     "type-check": "npm run type-check --workspaces"
   },
   "devDependencies": {
+    "@types/node": "^22.18.0",
 <% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
     "@typescript-eslint/eslint-plugin": "^8.43.0",
     "@typescript-eslint/parser": "^8.43.0",
@@ -54,5 +55,8 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
 <% } -%>
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3"
+  },
+  "engines": {
+    "node": ">=22.18.0"
   }
 }

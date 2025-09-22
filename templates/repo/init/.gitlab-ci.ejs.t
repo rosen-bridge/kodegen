@@ -1,7 +1,7 @@
 ---
 to: "<%= features.ciCd ? `./${projectName}/.gitlab-ci.yml` : null %>"
 ---
-image: node:20.11.0
+image: node:22.18.0
 
 stages:
   - installation

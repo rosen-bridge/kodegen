@@ -46,11 +46,10 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
     "vitest": "^3.1.4",
     "tsx": "^4.19.4",
 <% } -%>
-    "@types/node": "^20.11.9",
     "typescript": "^5.3.3"
   },
   "engines": {
-    "node": ">=20.11.0"
+    "node": ">=22.18.0"
   }
 }
 

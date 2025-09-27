@@ -7,6 +7,7 @@ to: ./<%= monorepoName %>/tsconfig.base.json
     "declaration": true,
     "declarationMap": true,
     "esModuleInterop": true,
+    "incremental": false,
     "inlineSourceMap": true,
     "inlineSources": true,
     "isolatedModules": false,

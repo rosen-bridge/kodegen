@@ -31,11 +31,12 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
     "coverage": "npm run test -- --coverage",
 <% } -%>
     "build": "tsc --build tsconfig.build.json",
+    "clean": "rimraf dist && rimraf tsconfig.build.tsbuildinfo",
     "type-check": "tsc --noEmit",
 <% if (testing) { -%>
-    "release": "npm run test -- --run && npm run build && npm publish --access public"
+    "release": "npm run test -- --run && npm run clean && npm run build && npm publish --access public"
 <% } else { -%>
-    "release": "npm run build && npm publish --access public"
+    "release": "npm run clean && npm run build && npm publish --access public"
 <% } -%>
   },
   "author": "<%= author %>",
@@ -44,6 +45,7 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
 <% if (testing) { -%>
     "@vitest/coverage-istanbul": "^3.1.4",
     "vitest": "^3.1.4",
+    "rimraf": "^6.0.1",
     "tsx": "^4.19.4",
 <% } -%>
     "typescript": "^5.3.3"

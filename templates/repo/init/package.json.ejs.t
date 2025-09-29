@@ -68,6 +68,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-check-file": "^3.2.0",
     "prettier": "^3.2.4",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
 <% } -%>
 <% if (features.testing) { -%>
     "@vitest/eslint-plugin": "^1.3.9",

@@ -26,7 +26,7 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
     "version": "npx changeset version && npm i",
 <% } -%>
     "release": "npm run release --workspaces",
-     "clean": "npm run clean --workspaces",
+    "clean": "npm run clean --workspaces",
     "type-check": "npm run type-check --workspaces"
   },
   "devDependencies": {

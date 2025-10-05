@@ -11,7 +11,10 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
   "name": "<%= h.inflection.dasherize(packageName) %>",
   "version": "0.0.0",
   "description": "<%= description %>",
-  "repository": "<%= repo %>",
+  "repository": {
+    "type": "git",
+    "url": "<%= repo %>"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",

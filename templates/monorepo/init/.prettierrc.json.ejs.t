@@ -5,7 +5,7 @@ to: "<%= (features.eslintFeaturesNode || features.eslintFeaturesBrowser || featu
   "singleQuote": true,
   "importOrder": [
     "<THIRD_PARTY_MODULES>",
-    "^@/(.*)$",
+    "^@rosen(.*)/(.*)$",
     "^[.](.*)$"
   ],
   "importOrderCaseInsensitive": true,

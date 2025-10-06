@@ -11,7 +11,10 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
   "name": "<%= h.inflection.dasherize(serviceName) %>",
   "version": "0.0.0",
   "description": "<%= description %>",
-  "repository": "<%= repo %>",
+  "repository": {
+    "type": "git",
+    "url": "<%= repo %>"
+  },
   "main": "src/index.ts",
   "type": "module",
   "files": [

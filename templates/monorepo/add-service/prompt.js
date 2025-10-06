@@ -20,7 +20,7 @@ module.exports = async ({ prompter }) => {
       type: 'input',
       name: 'repo',
       message: 'Please enter the service repo url',
-      initial: 'git+https://github.com/rosen-bridge/utils.git',
+      initial: `git+https://github.com/rosen-bridge/${serviceName}.git`,
     },
     {
       type: 'input',

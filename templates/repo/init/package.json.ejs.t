@@ -44,13 +44,13 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "express": "^4.18.1",
 <% } -%>
 <% if (features.logging) { -%>
-    "@rosen-bridge/callback-logger": "0.2.0",
-    "@rosen-bridge/winston-logger": "1.1.0",
+    "@rosen-bridge/callback-logger": "1.0.1",
+    "@rosen-bridge/winston-logger": "2.0.1",
 <% } -%>
 <% if (features.database) { -%>
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.8",
-    "@rosen-bridge/extended-typeorm": "^0.2.1",
+    "@rosen-bridge/extended-typeorm": "^1.0.1",
 <% } -%>
     "config": "^3.3.7",
     "tsx": "^4.19.4"
@@ -80,7 +80,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
 <% } -%>
 <% if (features.changesets) { -%>
     "@changesets/cli": "^2.27.1",
-    "@rosen-bridge/changeset-formatter": "^1.1.0",
+    "@rosen-bridge/changeset-formatter": "^2.0.1",
 <% } -%>
     "@types/config": "^0.0.41",
     "husky": "^8.0.0",

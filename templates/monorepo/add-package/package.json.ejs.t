@@ -50,8 +50,6 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
     "vitest": "^3.1.4",
     "tsx": "^4.19.4",
 <% } -%>
-    "rimraf": "^6.0.1",
-    "typescript": "^5.3.3"
   },
   "engines": {
     "node": ">=22.18.0"

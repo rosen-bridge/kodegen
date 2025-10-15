@@ -1,7 +1,7 @@
 ---
 to: ./<%= monorepoName %>/.lintstagedrc.mjs
 ---
-<% if (features.depcheck) { -%>
+<% if (features.knip) { -%>
 import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
@@ -28,12 +28,9 @@ const perPackage = (resolver) => (files) => {
 <% } -%>
 
 let tasks = {
-<% if (features.depcheck) { -%>
+<% if (features.knip) { -%>
   '**/{*.ts,*.js,package.json}': perPackage((directory) => {
-    return `npx depcheck ${path.relative(
-      process.cwd(),
-      directory
-    )}`;
+    return `cd ${path.relative(process.cwd(), directory)} && npx knip --dependencies`;
   }),
 <% } -%>
 };

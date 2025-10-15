@@ -4,8 +4,8 @@ to: ./<%= projectName %>/.lintstagedrc.mjs
 import process from 'node:process';
 
 let tasks = {
-<% if (features.depcheck) { -%>
-  '**/{*.ts,*.js,package.json}': () => [`npx depcheck .`],
+<% if (features.knip) { -%>
+  '**/{*.ts,*.js,package.json}': () => [`npx knip --dependencies`],
 <% } -%>
 };
 

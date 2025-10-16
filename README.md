@@ -24,7 +24,8 @@ A code generator for JavaScript/TypeScript projects that helps you bootstrap mon
 - **Husky** for git hooks
 - **lint-staged** for pre-commit checks
 - **Changesets** for version management
-- **depcheck** for dependency validation
+- **knip** for dependency validation
+- **madge** for circular dependency
 
 ## 📦 Installation
 
@@ -100,7 +101,8 @@ Creates a single repository with similar feature options as monorepo services.
 ### Infrastructure Features
 - **CI/CD**: GitLab CI pipeline templates
 - **Version Management**: Changesets for semantic versioning
-- **Dependency Checking**: depcheck integration
+- **Dependency Checking**: knip integration
+- **Circular Dependency**: madge integration
 - **Logging**: Structured logging with Winston
 - **Database**: TypeORM with migrations support
 
@@ -110,21 +112,6 @@ Creates a single repository with similar feature options as monorepo services.
 - **Database**: SQLite with TypeORM entities and migrations
 - **Logging**: File-based logging with rotation
 
-## 📁 Project Structure
-
-```
-kodegen/
-├── templates/                 # Generator templates
-│   ├── monorepo/             # Monorepo templates
-│   │   ├── init/             # Monorepo initialization
-│   │   ├── add-package/      # Package creation
-│   │   └── add-service/      # Service creation
-│   └── repo/                 # Single repo templates
-│       └── init/             # Project initialization
-├── .bin/cli.js              # CLI entry point
-├── index.js                 # Main generator logic
-└── package.json            # Project dependencies
-```
 
 ## 🔧 Configuration
 
@@ -161,36 +148,9 @@ When creating a service, choose from:
    npx kodegen monorepo add-package
    ```
 
-## 📝 Scripts
-
-Generated projects include useful npm scripts:
-- `build` - Compile TypeScript
-- `test` - Run tests with Vitest
-- `coverage` - Generate test coverage
-- `lint` - Fix linting issues
-- `lint:check` - Check for linting errors
-- `type-check` - TypeScript type checking
-- `start:dev` - Development server with hot reload
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
 ## 📄 License
 
 MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🏗️ Architecture
-
-Kodegen uses:
-- **Hygen** as the template engine
-- **Enquirer** for interactive prompts
-- **Execa** for shell commands
-- Custom helpers for dynamic template generation
 
 ## 🔍 Version Information
 

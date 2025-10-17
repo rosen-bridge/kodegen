@@ -89,7 +89,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "depcheck": "1.4.7",
 <% } -%>
     "@types/node": "^22.18.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.8.3"
   },
   "engines": {
     "node": ">=22.18.0"

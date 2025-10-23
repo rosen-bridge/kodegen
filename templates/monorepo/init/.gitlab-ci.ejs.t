@@ -41,8 +41,7 @@ knip:
       - node_modules
       - '**/node_modules'
   script:
-    - git fetch origin $CI_DEFAULT_BRANCH
-    - npx lint-staged --diff origin/$CI_DEFAULT_BRANCH...HEAD
+    - npx knip --dependencies
 <% } -%>
 
 type-check:

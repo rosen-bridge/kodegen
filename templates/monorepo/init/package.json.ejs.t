@@ -34,6 +34,7 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
 <% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
     "@typescript-eslint/eslint-plugin": "^8.43.0",
     "@typescript-eslint/parser": "^8.43.0",
+    "@eslint/js": "^9.37.0",
     "eslint": "^9.35.0",
     <% if (features.testing) { -%>
     "@vitest/eslint-plugin": "^1.3.9",

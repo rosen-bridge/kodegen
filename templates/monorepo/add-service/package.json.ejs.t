@@ -34,8 +34,8 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
 <% } -%>
 <% if (features.database) { -%>
     "typeorm": "NODE_OPTIONS='--import tsx' typeorm",
-    "typeorm:generate": "npm run typeorm migration:generate ./src/db/migrations/migration -- -p -d ./src/data-source.ts",
-    "typeorm:migrate": "npm run typeorm migration:run -- -d ./src/data-source.ts",
+    "typeorm:generate": "npm run typeorm migration:generate ./src/db/migrations/migration -- -p -d ./src/dataSource.ts",
+    "typeorm:migrate": "npm run typeorm migration:run -- -d ./src/dataSource.ts",
 <% } -%>
     "start:dev": "tsx watch ./src/index.ts",
     "start": "tsx ./src/index.ts",

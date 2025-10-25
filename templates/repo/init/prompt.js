@@ -36,7 +36,7 @@ module.exports = {
             ],
           },
           {
-        name: 'depcheck',
+        name: 'knip',
         message: 'Dependencies check',
       },
       {

@@ -35,7 +35,7 @@ module.exports = [
         message: 'Changesets',
       },
       {
-        name: 'depcheck',
+        name: 'knip',
         message: 'Dependencies check',
       },
     ],

@@ -1,16 +1,15 @@
 ---
 to: ./<%= monorepoName %>/.lintstagedrc.mjs
 ---
-<% if (features.depcheck) { -%>
-import fs from 'node:fs';
-import path from 'node:path';
-import process from 'node:process';
+
+<% if (features.knip) { -%>
+import fs from 'fs';
+import path from 'path';
 
 const perPackage = (resolver) => (files) => {
   return Array.from(
     files.reduce((packages, file) => {
-      let directory = path.dirname(file);
-
+      let directory = path.dirname(path.resolve(file));
       while (directory && directory !== process.cwd()) {
         if (fs.existsSync(path.join(directory, 'package.json'))) {
           packages.add(resolver(directory, file));
@@ -21,38 +20,51 @@ const perPackage = (resolver) => (files) => {
         directory = parent;
       }
       return packages;
-    }, new Set())
+    }, new Set()),
   );
 };
 
-<% } -%>
-
-let tasks = {
-<% if (features.depcheck) { -%>
-  '**/{*.ts,*.js,package.json}': perPackage((directory) => {
-    return `npx depcheck ${path.relative(
-      process.cwd(),
-      directory
-    )}`;
-  }),
-<% } -%>
+const getKnipCommand = (dir) => {
+  const posixRelative = path.posix.relative(process.cwd(), dir);
+  return `npx knip --dependencies --workspace ${posixRelative}`;
 };
 
-if (!process.env.CI) {
-  tasks = {
-    '*.ts': () => 'npm run type-check',
-  <% if ((features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) && features.testing) { -%>
-    '*.{js,ts}': ['eslint --fix', 'vitest related --run'],
-  <% } else if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
-    '*.{js,ts}': 'eslint --fix',
-  <% } else if (features.testing) { -%>
-    '*.{js,ts}': 'vitest related --run',
-  <% } -%>
-  <% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
-    '*': 'prettier --ignore-unknown --write',
-  <% } -%>
-    ...tasks,
-  };
+const runKnipConditional = (files) => {
+  const rootChanged = files.some((f) => {
+    const relative = path.relative(process.cwd(), path.resolve(f));
+    return !relative.includes(path.sep);
+  });
+  if (rootChanged) {
+    return ['npx knip --dependencies'];
+  } else {
+    return perPackage(getKnipCommand)(files);
+  }
+};
+<% } -%>
+
+const tasks = {
+  '*.ts': () => 'npm run type-check',
+};
+
+<% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
+tasks['*'] = ['prettier --ignore-unknown --write'];
+tasks['*.{js,ts}'] = ['eslint --fix'];
+<% } -%>
+
+<% if (features.testing) { -%>
+if (tasks['*.{js,ts}']) {
+  tasks['*.{js,ts}'].push('vitest related --run');
+} else {
+  tasks['*.{js,ts}'] = ['vitest related --run'];
 }
+<% } -%>
+
+<% if (features.knip) { -%>
+if (tasks['*']) {
+  tasks['*'].push(runKnipConditional);
+} else {
+  tasks['*'] = [runKnipConditional];
+}
+<% } -%>
 
 export default tasks;

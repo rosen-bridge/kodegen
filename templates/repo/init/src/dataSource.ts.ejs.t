@@ -1,5 +1,5 @@
 ---
-to: "<%= features.database ? `./${servicePath}/src/data-source.ts` : null %>"
+to: "<%= features.database ? `./${projectName}/src/dataSource.ts` : null %>"
 ---
 import path from 'path';
 import { fileURLToPath } from 'url';

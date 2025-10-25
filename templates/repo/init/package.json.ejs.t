@@ -32,8 +32,8 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
 <% } -%>
 <% if (features.database) { -%>
     "typeorm": "NODE_OPTIONS='--import tsx' typeorm",
-    "typeorm:generate": "npm run typeorm migration:generate ./src/db/migrations/migration -- -p -d ./src/data-source.ts",
-    "typeorm:migrate": "npm run typeorm migration:run -- -d ./src/data-source.ts",
+    "typeorm:generate": "npm run typeorm migration:generate ./src/db/migrations/migration -- -p -d ./src/dataSource.ts",
+    "typeorm:migrate": "npm run typeorm migration:run -- -d ./src/dataSource.ts",
 <% } -%>
     "type-check": "tsc --noEmit"
   },
@@ -62,6 +62,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
 <% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
     "@typescript-eslint/eslint-plugin": "^8.43.0",
     "@typescript-eslint/parser": "^8.43.0",
+    "@eslint/js": "^9.37.0",
     "eslint": "^9.35.0",
     "globals": "16.3.0",
     <% if (features.eslintFeaturesReact) { -%>
@@ -85,10 +86,11 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "@types/config": "^0.0.41",
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3",
-<% if (features.depcheck) { -%>
-    "depcheck": "1.4.7",
+<% if (features.knip) { -%>
+    "knip": "5.65.0",
 <% } -%>
     "@types/node": "^22.18.0",
+    "rimraf": "^6.0.1",
     "typescript": "^5.8.3"
   },
   "engines": {

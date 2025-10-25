@@ -5,8 +5,8 @@ image: node:22.18.0
 
 stages:
   - installation
-<% if (features.depcheck) { -%>
-  - depcheck
+<% if (features.knip) { -%>
+  - knip
 <% } -%>
   - type-check
 <% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
@@ -32,9 +32,9 @@ installation:
   script:
     - npm ci
 
-<% if (features.depcheck) { -%>
-depcheck:
-  stage: depcheck
+<% if (features.knip) { -%>
+knip:
+  stage: knip
   cache:
     key: $CI_COMMIT_REF_NAME
     policy: pull
@@ -42,8 +42,7 @@ depcheck:
       - node_modules
       - '**/node_modules'
   script:
-    - git fetch origin $CI_DEFAULT_BRANCH
-    - npx lint-staged --diff origin/$CI_DEFAULT_BRANCH...HEAD
+    - npx knip --dependencies
 <% } -%>
 
 type-check:

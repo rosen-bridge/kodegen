@@ -5,6 +5,7 @@ to: ./<%= monorepoName %>/.lintstagedrc.mjs
 <% if (features.knip) { -%>
 import fs from 'fs';
 import path from 'path';
+import process from 'process';
 
 const perPackage = (resolver) => (files) => {
   return Array.from(
@@ -26,7 +27,7 @@ const perPackage = (resolver) => (files) => {
 
 const getKnipCommand = (dir) => {
   const posixRelative = path.posix.relative(process.cwd(), dir);
-  return `npx knip --dependencies --workspace ${posixRelative}`;
+  return `knip --dependencies --workspace ${posixRelative}`;
 };
 
 const runKnipConditional = (files) => {
@@ -35,7 +36,7 @@ const runKnipConditional = (files) => {
     return !relative.includes(path.sep);
   });
   if (rootChanged) {
-    return ['npx knip --dependencies'];
+    return ['knip --dependencies'];
   } else {
     return perPackage(getKnipCommand)(files);
   }

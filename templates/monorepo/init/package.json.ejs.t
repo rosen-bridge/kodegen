@@ -25,6 +25,9 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
 <% if (features.changesets) { -%>
     "version": "npx changeset version && npm i",
 <% } -%>
+<% if (features.circularCheck) { -%>
+    "madge": "madge --circular --extensions ts ./",
+<% } -%>
     "release": "npm run release --workspaces",
     "clean": "npm run clean --workspaces",
     "type-check": "npm run type-check --workspaces"
@@ -34,6 +37,7 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
 <% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
     "@typescript-eslint/eslint-plugin": "^8.43.0",
     "@typescript-eslint/parser": "^8.43.0",
+    "@eslint/js": "^9.37.0",
     "eslint": "^9.35.0",
     <% if (features.testing) { -%>
     "@vitest/eslint-plugin": "^1.3.9",
@@ -54,6 +58,9 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
 <% } -%>
 <% if (features.knip) { -%>
     "knip": "^5.65.0",
+<% } -%>
+<% if (features.circularCheck) { -%>
+    "madge": "^8.0.0",
 <% } -%>
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3",

@@ -40,6 +40,10 @@ module.exports = {
         message: 'Dependencies check',
       },
       {
+        name: 'circularCheck',
+        message: 'Circular dependency check',
+      },
+      {
         name: 'express',
         message: 'Express',
       },

@@ -10,7 +10,7 @@ import startApp from './app';
 <% } -%>
 
 <% if (features.database) { -%>
-import { dataSource } from './data-source';
+import { dataSource } from './dataSource';
 <% } -%>
 
 const main = async () => {

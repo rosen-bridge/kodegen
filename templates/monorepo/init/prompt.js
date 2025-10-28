@@ -38,6 +38,10 @@ module.exports = [
         name: 'knip',
         message: 'Dependencies check',
       },
+      {
+        name: 'circularCheck',
+        message: 'Circular dependency check',
+      },
     ],
     name: 'features',
     message:

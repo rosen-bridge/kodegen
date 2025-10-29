@@ -25,6 +25,9 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
 <% if (features.changesets) { -%>
     "version": "npx changeset version && npm i",
 <% } -%>
+<% if (features.circularCheck) { -%>
+    "madge": "madge --circular --extensions ts ./",
+<% } -%>
     "release": "npm run release --workspaces",
     "clean": "npm run clean --workspaces",
     "type-check": "npm run type-check --workspaces"
@@ -55,6 +58,9 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
 <% } -%>
 <% if (features.knip) { -%>
     "knip": "^5.65.0",
+<% } -%>
+<% if (features.circularCheck) { -%>
+    "madge": "^8.0.0",
 <% } -%>
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3",

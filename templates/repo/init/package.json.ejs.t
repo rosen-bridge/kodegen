@@ -30,6 +30,9 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
 <% if (features.changesets) { -%>
     "version": "npx changeset version && npm i",
 <% } -%>
+<% if (features.circularCheck) { -%>
+    "madge": "madge --circular --extensions ts ./",
+<% } -%>
 <% if (features.database) { -%>
     "typeorm": "NODE_OPTIONS='--import tsx' typeorm",
     "typeorm:generate": "npm run typeorm migration:generate ./src/db/migrations/migration -- -p -d ./src/dataSource.ts",
@@ -88,6 +91,9 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "lint-staged": "^13.0.3",
 <% if (features.knip) { -%>
     "knip": "5.65.0",
+<% } -%>
+<% if (features.circularCheck) { -%>
+    "madge": "^8.0.0",
 <% } -%>
     "@types/node": "^22.18.0",
     "rimraf": "^6.0.1",

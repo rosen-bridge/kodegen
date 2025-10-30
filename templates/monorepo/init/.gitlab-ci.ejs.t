@@ -41,7 +41,7 @@ knip:
       - node_modules
       - '**/node_modules'
   script:
-    - knip --dependencies
+    - npx knip --dependencies
 <% } -%>
 
 type-check:

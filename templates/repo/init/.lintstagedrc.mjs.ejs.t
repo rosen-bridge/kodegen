@@ -20,9 +20,9 @@ if (tasks['*.{js,ts}']) {
 
 <% if (features.knip) { -%>
 if (tasks['*']) {
-  tasks['*'].push(() => 'npx knip --dependencies');
+  tasks['*'].push(() => 'knip --dependencies');
 } else {
-  tasks['*'] = [() => 'npx knip --dependencies'];
+  tasks['*'] = [() => 'knip --dependencies'];
 }
 <% } -%>
 

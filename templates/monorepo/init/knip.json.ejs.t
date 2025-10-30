@@ -3,6 +3,13 @@ to: "<%= features.knip ? `./${monorepoName}/knip.json` : null %>"
 ---
 {
   "$schema": "https://unpkg.com/knip/schema.json",
+  "workspaces": {
+    "packages/**": {
+      "entry": [ 
+        "lib/{index,cli,main}.{js,cjs,mjs,jsx,ts,cts,mts,tsx}" 
+      ]
+    }
+  },
   "ignoreDependencies": [
     "rimraf"
   ]

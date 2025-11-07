@@ -35,8 +35,12 @@ module.exports = [
         message: 'Changesets',
       },
       {
-        name: 'depcheck',
+        name: 'knip',
         message: 'Dependencies check',
+      },
+      {
+        name: 'circularCheck',
+        message: 'Circular dependency check',
       },
     ],
     name: 'features',

@@ -34,8 +34,8 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
 <% } -%>
 <% if (features.database) { -%>
     "typeorm": "NODE_OPTIONS='--import tsx' typeorm",
-    "typeorm:generate": "npm run typeorm migration:generate ./src/db/migrations/migration -- -p -d ./src/data-source.ts",
-    "typeorm:migrate": "npm run typeorm migration:run -- -d ./src/data-source.ts",
+    "typeorm:generate": "npm run typeorm migration:generate ./src/db/migrations/migration -- -p -d ./src/dataSource.ts",
+    "typeorm:migrate": "npm run typeorm migration:run -- -d ./src/dataSource.ts",
 <% } -%>
     "start:dev": "tsx watch ./src/index.ts",
     "start": "tsx ./src/index.ts",
@@ -60,10 +60,6 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
     "tsx": "^4.19.4"
   },
   "devDependencies": {
-<% if (features.testing) { -%>
-    "@vitest/coverage-istanbul": "^3.1.4",
-    "vitest": "^3.1.4",
-<% } -%>
 <% if (features.express) { -%>
     "@types/express": "^4.17.13",
 <% } -%>

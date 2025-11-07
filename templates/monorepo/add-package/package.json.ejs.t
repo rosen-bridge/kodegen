@@ -44,6 +44,13 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
   },
   "author": "<%= author %>",
   "license": "MIT",
+  "devDependencies": {
+<% if (testing) { -%>
+    "@vitest/coverage-istanbul": "^3.1.4",
+    "vitest": "^3.1.4",
+    "tsx": "^4.19.4"
+<% } -%>
+  },
   "engines": {
     "node": ">=22.18.0"
   }

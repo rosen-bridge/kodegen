@@ -33,6 +33,9 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
 <% if (features.circularCheck) { -%>
     "madge": "madge --circular --extensions ts ./",
 <% } -%>
+<% if (features.circularCheck) { -%>
+    "madge": "madge --circular --extensions ts ./",
+<% } -%>
 <% if (features.database) { -%>
     "typeorm": "NODE_OPTIONS='--import tsx' typeorm",
     "typeorm:generate": "npm run typeorm migration:generate ./src/db/migrations/migration -- -p -d ./src/dataSource.ts",

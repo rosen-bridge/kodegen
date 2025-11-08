@@ -60,10 +60,6 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
     "tsx": "^4.19.4"
   },
   "devDependencies": {
-<% if (features.testing) { -%>
-    "@vitest/coverage-istanbul": "^3.1.4",
-    "vitest": "^3.1.4",
-<% } -%>
 <% if (features.express) { -%>
     "@types/express": "^4.17.13",
 <% } -%>

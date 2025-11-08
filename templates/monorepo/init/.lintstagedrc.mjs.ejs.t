@@ -1,7 +1,6 @@
 ---
 to: ./<%= monorepoName %>/.lintstagedrc.mjs
 ---
-
 <% if (features.knip) { -%>
 import fs from 'node:fs';
 import path from 'node:path';

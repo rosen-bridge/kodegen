@@ -39,9 +39,6 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
     "@typescript-eslint/parser": "^8.43.0",
     "@eslint/js": "^9.37.0",
     "eslint": "^9.35.0",
-    <% if (features.testing) { -%>
-    "@vitest/eslint-plugin": "^1.3.9",
-    <% } -%>
     "globals": "16.3.0",
     <% if (features.eslintFeaturesReact) { -%>
     "eslint-plugin-react-hooks": "^5.2.0",
@@ -52,6 +49,12 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
     "prettier": "^3.2.4",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
 <% } -%>
+<% if (features.testing) { -%>
+    "@vitest/eslint-plugin": "^1.3.9",
+    "@vitest/coverage-istanbul": "^3.1.4",
+    "vitest": "^3.1.4",
+    "tsx": "^4.19.4",
+    <% } -%>
 <% if (features.changesets) { -%>
     "@changesets/cli": "^2.27.1",
     "@rosen-bridge/changeset-formatter": "^2.0.1",

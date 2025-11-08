@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 const prompt = require('./prompt');
 
@@ -20,25 +21,40 @@ const exitProcessDueToAbsentMonorepo = () => {
  * file is found
  */
 const getCWDPackageJson = () => {
-  if (!fs.existsSync(PACKAGE_JSON)) {
+  if (!fs.existsSync(PACKAGE_JSON)) return null;
+  try {
+    const json = fs.readFileSync(PACKAGE_JSON, 'utf-8');
+    return JSON.parse(json);
+  } catch {
     return null;
   }
+};
 
-  const packageJsonString = fs.readFileSync(PACKAGE_JSON, {
-    encoding: 'utf-8',
-  });
-
-  return JSON.parse(packageJsonString);
+/**
+ * Check if monorepo root has vitest.shared.ts
+ */
+const monorepoHasTesting = () => {
+  const rootVitestPath = path.join(process.cwd(), 'vitest.shared.ts');
+  return fs.existsSync(rootVitestPath);
 };
 
 module.exports = {
-  prompt: (...args) => {
+  prompt: async (...args) => {
     const packageJson = getCWDPackageJson();
-
     if (!packageJson?.workspaces) {
       exitProcessDueToAbsentMonorepo();
     }
 
-    return prompt(...args);
+    const answers = await prompt(...args);
+
+    if (answers.features?.testing && !monorepoHasTesting()) {
+      console.error(
+        '\nError: This monorepo does not have "vitest.shared.ts" in its root, so testing cannot be enabled for this service.\n' +
+        'Please reinitialize the monorepo with testing enabled or disable testing for this service.\n'
+      );
+      process.exit(1);
+    }
+
+    return answers;
   },
 };

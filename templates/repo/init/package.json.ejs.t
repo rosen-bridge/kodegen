@@ -28,7 +28,10 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "start": "tsx ./src/index.ts",
     "build": "rimraf dist && tsc",
 <% if (features.changesets) { -%>
-    "version": "npx changeset version && npm i",
+    "version": "npx changeset version && npx changeset add --empty && npm i",
+<% } -%>
+<% if (features.circularCheck) { -%>
+    "madge": "madge --circular --extensions ts ./",
 <% } -%>
 <% if (features.circularCheck) { -%>
     "madge": "madge --circular --extensions ts ./",

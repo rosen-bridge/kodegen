@@ -1,0 +1,21 @@
+---
+to: "<%= features.testing ? `./${monorepoName}/vitest.shared.ts` : null %>"
+---
+import { defineConfig } from 'vitest/config';
+
+export default defineConfig({
+  test: {
+    globals: true,
+    coverage: {
+      all: true,
+      provider: 'istanbul',
+      reporter: 'cobertura',
+      reportsDirectory: './coverage'
+    },
+    poolOptions: {
+      forks: {
+        singleFork: true,
+      },
+    },
+  },
+});

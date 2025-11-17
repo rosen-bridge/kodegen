@@ -62,6 +62,7 @@ export default [
         { '**/*.{js,ts,jsx,tsx}': 'CAMEL_CASE' },
         { ignoreMiddleExtensions: true },
       ],
+      ...typescriptEslint.configs.recommended.rules,
 <% if (features.eslintFeaturesReact) { -%>
       // React-Specific Rules
       'react-refresh/only-export-components': 'warn',

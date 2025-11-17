@@ -36,8 +36,12 @@ module.exports = {
             ],
           },
           {
-        name: 'depcheck',
+        name: 'knip',
         message: 'Dependencies check',
+      },
+      {
+        name: 'circularCheck',
+        message: 'Circular dependency check',
       },
       {
         name: 'express',

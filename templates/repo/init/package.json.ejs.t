@@ -19,21 +19,24 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "lint": "eslint --fix . && npm run prettify",
     "lint:check": "eslint . && npm run prettify:check",
 <% } -%>
-    "prepare": "husky install",
+    "prepare": "husky",
 <% if (features.testing) { -%>
-    "test": "NODE_OPTIONS='--import tsx' vitest",
+    "test": "cross-env NODE_OPTIONS=\"--import tsx\" vitest",
     "coverage": "npm run test -- --coverage",
 <% } -%>
     "start:dev": "tsx watch ./src/index.ts",
     "start": "tsx ./src/index.ts",
     "build": "rimraf dist && tsc",
 <% if (features.changesets) { -%>
-    "version": "npx changeset version && npm i",
+    "version": "npx changeset version && npx changeset add --empty && npm i",
+<% } -%>
+<% if (features.circularCheck) { -%>
+    "madge": "madge --circular --extensions ts ./",
 <% } -%>
 <% if (features.database) { -%>
-    "typeorm": "NODE_OPTIONS='--import tsx' typeorm",
-    "typeorm:generate": "npm run typeorm migration:generate ./src/db/migrations/migration -- -p -d ./src/data-source.ts",
-    "typeorm:migrate": "npm run typeorm migration:run -- -d ./src/data-source.ts",
+    "typeorm": "cross-env NODE_OPTIONS=\"--import tsx\" typeorm",
+    "typeorm:generate": "npm run typeorm migration:generate ./src/db/migrations/migration -- -p -d ./src/dataSource.ts",
+    "typeorm:migrate": "npm run typeorm migration:run -- -d ./src/dataSource.ts",
 <% } -%>
     "type-check": "tsc --noEmit"
   },
@@ -62,6 +65,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
 <% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
     "@typescript-eslint/eslint-plugin": "^8.43.0",
     "@typescript-eslint/parser": "^8.43.0",
+    "@eslint/js": "^9.37.0",
     "eslint": "^9.35.0",
     "globals": "16.3.0",
     <% if (features.eslintFeaturesReact) { -%>
@@ -83,13 +87,18 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "@rosen-bridge/changeset-formatter": "^2.0.1",
 <% } -%>
     "@types/config": "^0.0.41",
-    "husky": "^8.0.0",
+    "husky": "^9.1.7",
     "lint-staged": "^13.0.3",
-<% if (features.depcheck) { -%>
-    "depcheck": "1.4.7",
+<% if (features.knip) { -%>
+    "knip": "5.65.0",
 <% } -%>
+<% if (features.circularCheck) { -%>
+    "madge": "^8.0.0",
+<% } -%>
+    "cross-env": "^10.1.0",
     "@types/node": "^22.18.0",
-    "typescript": "^5.3.3"
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.3"
   },
   "engines": {
     "node": ">=22.18.0"

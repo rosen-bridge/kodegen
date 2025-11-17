@@ -21,9 +21,12 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
     "lint": "npm run lint --workspaces",
     "lint:check": "npm run lint:check --workspaces",
 <% } -%>
-    "prepare": "husky install",
+    "prepare": "husky",
 <% if (features.changesets) { -%>
     "version": "npx changeset version && npm i",
+<% } -%>
+<% if (features.circularCheck) { -%>
+    "madge": "madge --circular --extensions ts ./",
 <% } -%>
     "release": "npm run release --workspaces",
     "clean": "npm run clean --workspaces",
@@ -34,10 +37,8 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
 <% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
     "@typescript-eslint/eslint-plugin": "^8.43.0",
     "@typescript-eslint/parser": "^8.43.0",
+    "@eslint/js": "^9.37.0",
     "eslint": "^9.35.0",
-    <% if (features.testing) { -%>
-    "@vitest/eslint-plugin": "^1.3.9",
-    <% } -%>
     "globals": "16.3.0",
     <% if (features.eslintFeaturesReact) { -%>
     "eslint-plugin-react-hooks": "^5.2.0",
@@ -48,14 +49,24 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
     "prettier": "^3.2.4",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
 <% } -%>
+<% if (features.testing) { -%>
+    "@vitest/eslint-plugin": "^1.3.9",
+    "@vitest/coverage-istanbul": "^3.1.4",
+    "vitest": "^3.1.4",
+    "tsx": "^4.19.4",
+    <% } -%>
 <% if (features.changesets) { -%>
     "@changesets/cli": "^2.27.1",
     "@rosen-bridge/changeset-formatter": "^2.0.1",
 <% } -%>
-<% if (features.depcheck) { -%>
-    "depcheck": "^1.4.7",
+<% if (features.knip) { -%>
+    "knip": "^5.65.0",
 <% } -%>
-    "husky": "^8.0.0",
+<% if (features.circularCheck) { -%>
+    "madge": "^8.0.0",
+<% } -%>
+    "cross-env": "^10.1.0",
+    "husky": "^9.1.7",
     "lint-staged": "^13.0.3",
     "rimraf": "^6.0.1",
     "typescript": "^5.8.3"

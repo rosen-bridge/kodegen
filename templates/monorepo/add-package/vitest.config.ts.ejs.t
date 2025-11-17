@@ -1,21 +1,16 @@
 ---
 to: "<%= testing ? `./${packagePath}/vitest.config.ts` : null %>"
 ---
-import { defineConfig } from 'vitest/config';
+import { defineProject, mergeConfig } from 'vitest/config';
+<% 
+  normalizedPackagePath = packagePath.replace('./', '')
+  depth = normalizedPackagePath.split('/').length
+  sharedConfigPath = '../'.repeat(depth) + 'vitest.shared'
+%>
+// @ts-expect-error – allow importing shared config
+import configShared from '<%= sharedConfigPath %>';
 
-export default defineConfig({
-  test: {
-    globals: true,
-    coverage: {
-      all: true,
-      provider: 'istanbul',
-      reporter: 'cobertura',
-    },
-    passWithNoTests: true,
-    poolOptions: {
-      forks: {
-        singleFork: true,
-      },
-    },
-  },
-});
+export default mergeConfig(
+  configShared,
+  defineProject({})
+);

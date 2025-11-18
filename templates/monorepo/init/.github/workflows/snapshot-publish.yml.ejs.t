@@ -76,7 +76,7 @@ jobs:
         if: ${{ steps.publish.conclusion == 'success' }}
         shell: bash
         run: |
-          PATTERN_START='success packages published successfully:'
+          PATTERN_START='success.*packages published successfully:'
           PATTERN_END='Creating git tag...'
 
           published_versions=$(printf '%s\n' "$CHANGESET_LOG" \

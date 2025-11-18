@@ -38,6 +38,19 @@ const monorepoHasTesting = () => {
   return fs.existsSync(rootVitestPath);
 };
 
+/**
+ * Check if monorepo root has .github/workflows/ci-publish.yml (has stable release)
+ */
+const monorepoHasCiPublish = () => {
+  const ciPublishPath = path.join(
+    process.cwd(),
+    '.github',
+    'workflows',
+    'ci-publish.yml'
+  );
+  return fs.existsSync(ciPublishPath);
+};
+
 module.exports = {
   prompt: async (...args) => {
     const packageJson = getCWDPackageJson();
@@ -55,6 +68,9 @@ module.exports = {
       process.exit(1);
     }
 
-    return answers;
+    return {
+      ...answers,
+      hasCiPublishWorkflow: monorepoHasCiPublish(),
+    }
   },
 };

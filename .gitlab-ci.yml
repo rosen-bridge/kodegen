@@ -7,7 +7,7 @@ stages:
 installation:
   stage: installation
   cache:
-    key: $CI_COMMIT_REF_NAME
+    key: ${CI_COMMIT_REF_NAME}
     policy: push
     paths:
       - node_modules
@@ -17,7 +17,7 @@ installation:
 changeset:
   stage: changeset
   cache:
-    key: $CI_COMMIT_REF_NAME
+    key: ${CI_COMMIT_REF_NAME}
     policy: pull
     paths:
       - node_modules

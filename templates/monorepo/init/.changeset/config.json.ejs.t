@@ -10,5 +10,15 @@ to: "<%= features.changesets ? `./${monorepoName}/.changeset/config.json` : null
   "access": "public",
   "baseBranch": "dev",
   "updateInternalDependencies": "patch",
-  "ignore": []
+  "ignore": [],
+  "privatePackages": {
+    "version": true
+  },
+   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
+    "updateInternalDependents": "always"
+  }<% if (features.ciCdGithubActionsSnapshot || features.ciCdGitlabSnapshot) { %>,
+  "snapshot": {
+    "useCalculatedVersion": true,
+    "prereleaseTemplate": "{tag}"
+  }<% } %>
 }

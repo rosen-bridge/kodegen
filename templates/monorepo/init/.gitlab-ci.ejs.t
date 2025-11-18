@@ -1,119 +1,73 @@
 ---
-to: "<%= features.ciCd ? `./${monorepoName}/.gitlab-ci.yml` : null %>"
+to: "<%= (features.ciCdGitlabCi || features.ciCdGitlabSnapshot) ? `./${monorepoName}/.gitlab-ci.yml` : null %>"
 ---
 image: node:22.18.0
 
+default:
+  interruptible: true
+<% if (features.ciCdGitlabSnapshot) { -%>
+
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE =~ /push|web/'
+      when: always
+    - when: never
+<% } -%>
+
 stages:
   - installation
-<% if (features.knip) { -%>
-  - knip
-<% } -%>
   - build
-  - type-check
-<% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
-  - lint
-<% } -%>
-<% if (features.testing) { -%>
-  - test
-<% } -%>
-<% if (features.changesets) { -%>
-  - changeset
-<% } -%>
+  - triggers
+
+variables:
+  npm_config_cache: '${CI_PROJECT_DIR}/.npm'
+  NPM_VERSION: '11.6.2'
+
+before_script:
+  - npm i -g npm@${NPM_VERSION}
 
 installation:
   stage: installation
   cache:
-    key: $CI_COMMIT_REF_NAME
+    key: ${CI_COMMIT_REF_NAME}
     policy: push
     paths:
       - node_modules
       - '**/node_modules'
+      - .npm
   script:
     - npm ci
-
-<% if (features.knip) { -%>
-knip:
-  stage: knip
-  cache:
-    key: $CI_COMMIT_REF_NAME
-    policy: pull
-    paths:
-      - node_modules
-      - '**/node_modules'
-  script:
-    - npx knip --dependencies
-<% } -%>
-
-type-check:
-  stage: type-check
-  cache:
-    key: $CI_COMMIT_REF_NAME
-    policy: pull
-    paths:
-      - node_modules
-      - '**/node_modules'
-      - '**/dist'
-  script:
-    - npm run type-check
 
 build:
   stage: build
   cache:
-    key: $CI_COMMIT_REF_NAME
+    key: ${CI_COMMIT_REF_NAME}
     policy: pull-push
     paths:
       - node_modules
       - '**/node_modules'
       - '**/dist'
+      - .npm
   script:
     - npm run build
-<% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
+<% if (features.ciCdGitlabCi) { -%>
 
-lint:
-  stage: lint
-  cache:
-    key: $CI_COMMIT_REF_NAME
-    policy: pull
-    paths:
-      - node_modules
-      - '**/node_modules'
-      - '**/dist'
-  script:
-    - npm run lint:check
+run_ci:
+  stage: triggers
+  trigger:
+    include:
+      - local: .gitlab/workflows/ci.yml
+    strategy: mirror
 <% } -%>
-<% if (features.testing) { -%>
+<% if (features.ciCdGitlabSnapshot) { -%>
 
-test:
-  stage: test
-  cache:
-    key: $CI_COMMIT_REF_NAME
-    policy: pull
-    paths:
-      - node_modules
-      - '**/node_modules'
-      - '**/dist'
-  script:
-    - npm run coverage
-  coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
-  artifacts:
-    reports:
-      coverage_report:
-        coverage_format: cobertura
-        path: '**/coverage/cobertura-coverage.xml'
-<% } -%>
-<% if (features.changesets) { -%>
-
-changeset:
-  stage: changeset
-  cache:
-    key: $CI_COMMIT_REF_NAME
-    policy: pull
-    paths:
-      - node_modules
-      - '**/node_modules'
-      - '**/dist'
-  before_script:
-    - git fetch origin dev
-  script:
-    - npx changeset status --since=origin/dev
+run_snapshot_publish:
+  stage: triggers
+  rules:
+    - when: manual
+  allow_failure: true
+  trigger:
+    include:
+      - local: .gitlab/workflows/snapshot-publish.yml
+    strategy: mirror
 <% } -%>

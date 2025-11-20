@@ -57,7 +57,7 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
     "sqlite3": "^5.0.8",
     "@rosen-bridge/extended-typeorm": "^1.0.1",
 <% } -%>
-    "config": "^3.3.7",
+    "config": "^3.3.7"
   },
   "devDependencies": {
 <% if (features.express) { -%>

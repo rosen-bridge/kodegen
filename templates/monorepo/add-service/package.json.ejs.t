@@ -30,11 +30,11 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
     "lint:check": "eslint . && npm run prettify:check",
 <% } -%>
 <% if (features.testing) { -%>
-    "test": "NODE_OPTIONS='--import tsx' vitest",
+    "test": "cross-env NODE_OPTIONS=\"--import tsx\" vitest",
     "coverage": "npm run test -- --coverage",
 <% } -%>
 <% if (features.database) { -%>
-    "typeorm": "NODE_OPTIONS='--import tsx' typeorm",
+    "typeorm": "cross-env NODE_OPTIONS=\"--import tsx\" typeorm",
     "typeorm:generate": "npm run typeorm migration:generate ./src/db/migrations/migration -- -p -d ./src/dataSource.ts",
     "typeorm:migrate": "npm run typeorm migration:run -- -d ./src/dataSource.ts",
 <% } -%>
@@ -58,7 +58,6 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
     "@rosen-bridge/extended-typeorm": "^1.0.1",
 <% } -%>
     "config": "^3.3.7",
-    "tsx": "^4.19.4"
   },
   "devDependencies": {
 <% if (features.express) { -%>

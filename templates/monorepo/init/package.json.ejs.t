@@ -21,7 +21,7 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
     "lint": "npm run lint --workspaces",
     "lint:check": "npm run lint:check --workspaces",
 <% } -%>
-    "prepare": "husky install",
+    "prepare": "husky",
 <% if (features.changesets) { -%>
     "version": "npx changeset version && npm i",
 <% } -%>
@@ -65,7 +65,8 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
 <% if (features.circularCheck) { -%>
     "madge": "^8.0.0",
 <% } -%>
-    "husky": "^8.0.0",
+    "cross-env": "^10.1.0",
+    "husky": "^9.1.7",
     "lint-staged": "^13.0.3",
     "rimraf": "^6.0.1",
     "typescript": "^5.8.3"

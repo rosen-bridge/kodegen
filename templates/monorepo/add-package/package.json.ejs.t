@@ -30,7 +30,7 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
     "lint:check": "eslint . && npm run prettify:check",
 <% } -%>
 <% if (testing) { -%>
-    "test": "NODE_OPTIONS='--import tsx' vitest",
+    "test": "cross-env NODE_OPTIONS=\"--import tsx\" vitest",
     "coverage": "npm run test -- --coverage",
 <% } -%>
     "build": "tsc --build tsconfig.build.json",
@@ -44,13 +44,6 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
   },
   "author": "<%= author %>",
   "license": "MIT",
-  "devDependencies": {
-<% if (testing) { -%>
-    "@vitest/coverage-istanbul": "^3.1.4",
-    "vitest": "^3.1.4",
-    "tsx": "^4.19.4"
-<% } -%>
-  },
   "engines": {
     "node": ">=22.18.0"
   }

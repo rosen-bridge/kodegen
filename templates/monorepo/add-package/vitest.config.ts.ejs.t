@@ -7,6 +7,7 @@ import { defineProject, mergeConfig } from 'vitest/config';
   depth = normalizedPackagePath.split('/').length
   sharedConfigPath = '../'.repeat(depth) + 'vitest.shared'
 %>
+// @ts-expect-error – allow importing shared config
 import configShared from '<%= sharedConfigPath %>';
 
 export default mergeConfig(

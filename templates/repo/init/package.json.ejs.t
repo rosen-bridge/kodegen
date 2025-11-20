@@ -19,9 +19,9 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "lint": "eslint --fix . && npm run prettify",
     "lint:check": "eslint . && npm run prettify:check",
 <% } -%>
-    "prepare": "husky install",
+    "prepare": "husky",
 <% if (features.testing) { -%>
-    "test": "NODE_OPTIONS='--import tsx' vitest",
+    "test": "cross-env NODE_OPTIONS=\"--import tsx\" vitest",
     "coverage": "npm run test -- --coverage",
 <% } -%>
     "start:dev": "tsx watch ./src/index.ts",
@@ -33,11 +33,8 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
 <% if (features.circularCheck) { -%>
     "madge": "madge --circular --extensions ts ./",
 <% } -%>
-<% if (features.circularCheck) { -%>
-    "madge": "madge --circular --extensions ts ./",
-<% } -%>
 <% if (features.database) { -%>
-    "typeorm": "NODE_OPTIONS='--import tsx' typeorm",
+    "typeorm": "cross-env NODE_OPTIONS=\"--import tsx\" typeorm",
     "typeorm:generate": "npm run typeorm migration:generate ./src/db/migrations/migration -- -p -d ./src/dataSource.ts",
     "typeorm:migrate": "npm run typeorm migration:run -- -d ./src/dataSource.ts",
 <% } -%>
@@ -90,7 +87,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "@rosen-bridge/changeset-formatter": "^2.0.1",
 <% } -%>
     "@types/config": "^0.0.41",
-    "husky": "^8.0.0",
+    "husky": "^9.1.7",
     "lint-staged": "^13.0.3",
 <% if (features.knip) { -%>
     "knip": "5.65.0",
@@ -98,6 +95,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
 <% if (features.circularCheck) { -%>
     "madge": "^8.0.0",
 <% } -%>
+    "cross-env": "^10.1.0",
     "@types/node": "^22.18.0",
     "rimraf": "^6.0.1",
     "typescript": "^5.8.3"

@@ -16,9 +16,11 @@ jobs:
   ci:
     name: CI and Publish
     runs-on: ubuntu-latest
+<% if (features.ciCdStablePublish) { -%>
 
     env:
       PUBLISH_PREFIX: ${{ vars.PUBLISH_PREFIX != '' && vars.PUBLISH_PREFIX || 'rosen-version:' }}
+<% } -%>
 
     steps:
       - name: Checkout

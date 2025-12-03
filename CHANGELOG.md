@@ -12,8 +12,7 @@
 - Windows compatibility for husky and NODE_OPTIONS
 - Configure prettier with import sorting
 - Centralize Vitest in monorepo root
-- Centralize Vitest in monorepo root
-  Update the `version` script to also create an empty changeset file
+- Update the `version` script to also create an empty changeset file
 
 ### Patch Changes
 

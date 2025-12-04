@@ -17,7 +17,7 @@
 ### Patch Changes
 
 - Move shared devDependencies to monorepo root and update dependencies
-- Fix Knip entry files configuration for monorepo packages
+
 
 ## 0.7.1
 

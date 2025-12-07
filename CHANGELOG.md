@@ -1,5 +1,24 @@
 # kodegen
 
+## 0.8.0
+
+### Minor Changes
+
+- Add circular dependency checking with Madge
+- add --help command to auto-list available generators and actions
+- Add Knip config to detect unused and missing dependencies and replace it with depcheck
+- Add default repository URL and update package template to use it in repository field
+- Add clean script for build artifacts
+- Windows compatibility for husky and NODE_OPTIONS
+- Configure prettier with import sorting
+- Centralize Vitest in monorepo root
+- Update the `version` script to also create an empty changeset file
+
+### Patch Changes
+
+- Move shared devDependencies to monorepo root and update dependencies
+
+
 ## 0.7.1
 
 ### Patch Changes

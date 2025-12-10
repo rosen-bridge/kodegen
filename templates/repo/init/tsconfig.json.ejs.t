@@ -14,6 +14,7 @@ to: ./<%= projectName %>/tsconfig.json
     "module": "esnext",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
+    "strictPropertyInitialization": false,
     "outDir": "dist",
     "paths": {
       "@/configs": ["./src/configs"],

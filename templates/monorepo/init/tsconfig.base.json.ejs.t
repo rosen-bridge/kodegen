@@ -13,6 +13,7 @@ to: ./<%= monorepoName %>/tsconfig.base.json
     "module": "esnext",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
+    "strictPropertyInitialization": false,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,

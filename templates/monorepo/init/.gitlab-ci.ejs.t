@@ -1,73 +1,26 @@
 ---
 to: "<%= (features.ciCdGitlabCi || features.ciCdGitlabSnapshot) ? `./${monorepoName}/.gitlab-ci.yml` : null %>"
 ---
-image: node:22.18.0
+image: $GITLAB_CI_IMAGE
 
 default:
   interruptible: true
-<% if (features.ciCdGitlabSnapshot) { -%>
 
 workflow:
   rules:
-    - if: '$CI_PIPELINE_SOURCE =~ /push|web/'
+    - if: '$CI_PIPELINE_SOURCE =~ /push<% if (features.ciCdGitlabSnapshot) { %>|web/<% } %>'
       when: always
     - when: never
+
+include:
+  - component: $CI_SERVER_FQDN/${ROOT_COMPONENT}
+
+<% if (features.ciCdGitlabCi || features.ciCdGitlabSnapshot) { -%>
+    inputs:
 <% } -%>
-
-stages:
-  - installation
-  - build
-  - triggers
-
-variables:
-  npm_config_cache: '${CI_PROJECT_DIR}/.npm'
-  NPM_VERSION: '11.6.2'
-
-before_script:
-  - npm i -g npm@${NPM_VERSION}
-
-installation:
-  stage: installation
-  cache:
-    key: ${CI_COMMIT_REF_NAME}
-    policy: push
-    paths:
-      - node_modules
-      - '**/node_modules'
-      - .npm
-  script:
-    - npm ci
-
-build:
-  stage: build
-  cache:
-    key: ${CI_COMMIT_REF_NAME}
-    policy: pull-push
-    paths:
-      - node_modules
-      - '**/node_modules'
-      - '**/dist'
-      - .npm
-  script:
-    - npm run build
 <% if (features.ciCdGitlabCi) { -%>
-
-run_ci:
-  stage: triggers
-  trigger:
-    include:
-      - local: .gitlab/workflows/ci.yml
-    strategy: mirror
+      enable_ci_child: true
 <% } -%>
 <% if (features.ciCdGitlabSnapshot) { -%>
-
-run_snapshot_publish:
-  stage: triggers
-  rules:
-    - when: manual
-  allow_failure: true
-  trigger:
-    include:
-      - local: .gitlab/workflows/snapshot-publish.yml
-    strategy: mirror
+      enable_snapshot_publish_child: true
 <% } -%>

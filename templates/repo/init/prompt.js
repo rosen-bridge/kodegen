@@ -26,55 +26,6 @@ module.exports = {
       {
         type: 'multiselect',
         choices() {
-          const includePublish = !!this._changesetsEnabled;
-
-          const baseCiCdChoices = [
-            {
-              type: 'multiselect',
-              name: 'ciCdContinuousIntegration',
-              message: 'Continuous Integration support',
-              choices: [
-                {
-                  name: 'ciCdGitlabCi',
-                  message: 'GitLab CI',
-                },
-                {
-                  name: 'ciCdGithubActionsCi',
-                  message: 'GitHub Actions',
-                },
-              ],
-            },
-          ];
-
-          const publishCiCdChoices = [
-            {
-              type: 'multiselect',
-              name: 'ciCdContinuousDelivery',
-              message: 'Continuous Delivery support',
-              choices: [
-                {
-                  name: 'ciCdStablePublish',
-                  message: 'Stable publish (release)',
-                },
-                {
-                  type: 'multiselect',
-                  name: 'ciCdSnapshotPublish',
-                  message: 'Snapshot publish (Prerelease)',
-                  choices: [
-                    {
-                      name: 'ciCdGitlabSnapshot',
-                      message: 'GitLab CI',
-                    },
-                    {
-                      name: 'ciCdGithubActionsSnapshot',
-                      message: 'GitHub Actions',
-                    },
-                  ],
-                },
-              ],
-            },
-          ];
-
           return [
             {
               type: 'multiselect',
@@ -114,14 +65,19 @@ module.exports = {
               message: 'Changesets',
             },
             {
-              name: 'discordAnnounce',
-              message: 'Discord announce for publish pipelines',
-            },
-            {
               type: 'multiselect',
-              name: 'ciCd',
-              message: 'CI/CD support',
-              choices: includePublish ? baseCiCdChoices.concat(publishCiCdChoices) : baseCiCdChoices,
+              name: 'ciCdContinuousIntegration',
+              message: 'Continuous Integration support',
+              choices: [
+                {
+                  name: 'ciCdGitlabCi',
+                  message: 'GitLab CI',
+                },
+                {
+                  name: 'ciCdGithubActionsCi',
+                  message: 'GitHub Actions',
+                },
+              ],
             },
           ];
         },
@@ -129,23 +85,8 @@ module.exports = {
         message:
           'Which of the following features you want to enable? (Use space key to select/deselect)',
         async space() {
-          if (!this.multiple) return this.alert();
-
           const choice = this.focused;
           this.toggle(choice);
-
-          if (choice && choice.name === 'changesets') {
-            const selectedNames = this.enabled.map(ch => ch.name);
-            this._changesetsEnabled = !!choice.enabled;
-
-            await this.reset();
-
-            for (const name of selectedNames) {
-              const nextChoice = this.find(name);
-              if (nextChoice) this.enable(nextChoice);
-            }
-          }
-
           return this.render();
         },
         result(names) {

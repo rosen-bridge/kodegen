@@ -12,7 +12,6 @@ workflow:
 
 include:
   - component: $CI_SERVER_FQDN/${CI_COMPONENT}
-
 <%
   const hasInputs = [
     features.knip,
@@ -26,6 +25,8 @@ include:
 
 <% if (hasInputs) { -%>
     inputs:
+      type_check_cache_paths:
+        - node_modules
 <% } -%>
 <% if (features.knip) { -%>
       enable_knip: true
@@ -35,6 +36,8 @@ include:
 <% } -%>
 <% if (features.testing) { -%>
       enable_test: true
+      test_cache_paths:
+        - node_modules
 <% } -%>
 <% if (features.changesets) { -%>
       enable_changeset: true

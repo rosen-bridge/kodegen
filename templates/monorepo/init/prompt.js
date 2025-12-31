@@ -12,8 +12,11 @@ module.exports = [
   },
   {
     type: 'multiselect',
+    _changesetsEnabled: false,
+    _publishEnabled: false,
     choices() {
-      const includePublish = !!this._changesetsEnabled;
+      const includePublish = this._changesetsEnabled;
+      const includeAnnounce = this._publishEnabled;
 
       const baseCiCdChoices = [
         {
@@ -41,7 +44,7 @@ module.exports = [
           choices: [
             {
               name: 'ciCdStablePublish',
-              message: 'Stable publish (release)',
+              message: 'Github Stable Publish',
             },
             {
               type: 'multiselect',
@@ -61,6 +64,15 @@ module.exports = [
           ],
         },
       ];
+
+      const announceChoices = includeAnnounce
+        ? [
+            {
+              name: 'discordAnnounce',
+              message: 'Discord announce for publish pipelines',
+            },
+          ]
+        : [];
 
       return [
         {
@@ -89,36 +101,46 @@ module.exports = [
           message: 'Circular dependency check',
         },
         {
-          name: 'discordAnnounce',
-          message: 'Discord announce for publish pipelines',
-        },
-        {
           type: 'multiselect',
           name: 'ciCd',
           message: 'CI/CD support',
           choices: includePublish ? baseCiCdChoices.concat(publishCiCdChoices) : baseCiCdChoices,
         },
-      ];
+      ].concat(announceChoices);
     },
     name: 'features',
     message:
       'Which of the following features you want to enable? (Use space key to select/deselect)',
     async space() {
-      if (!this.multiple) return this.alert();
-
       const choice = this.focused;
       this.toggle(choice);
 
-      if (choice && choice.name === 'changesets') {
-        const selectedNames = this.enabled.map(ch => ch.name);
-        this._changesetsEnabled = !!choice.enabled;
-
+      const resetAndReEnable = async names => {
         await this.reset();
 
-        for (const name of selectedNames) {
+        for (const name of names) {
           const nextChoice = this.find(name);
           if (nextChoice) this.enable(nextChoice);
         }
+      };
+
+      selectedNames = this.enabled.map(ch => ch.name);
+      const nextChangesetsEnabled = selectedNames.includes('changesets');
+
+      if (this._changesetsEnabled !== nextChangesetsEnabled) {
+        this._changesetsEnabled = nextChangesetsEnabled;
+        await resetAndReEnable(selectedNames);
+      }
+
+      selectedNames = this.enabled.map(ch => ch.name);
+      const nextPublishEnabled =
+        selectedNames.includes('ciCdStablePublish') ||
+        selectedNames.includes('ciCdGitlabSnapshot') ||
+        selectedNames.includes('ciCdGithubActionsSnapshot');
+
+      if (this._publishEnabled !== nextPublishEnabled) {
+        this._publishEnabled = nextPublishEnabled;
+        await resetAndReEnable(selectedNames);
       }
 
       return this.render();

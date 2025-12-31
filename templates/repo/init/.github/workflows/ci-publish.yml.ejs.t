@@ -1,10 +1,8 @@
 ---
-to: "<%= (features.ciCdGithubActionsCi || features.ciCdStablePublish)
-  ? `./${projectName}/.github/workflows/${features.ciCdStablePublish ? 'ci-publish' : 'ci'}.yml`
-  : null %>"
+to: "<%= features.ciCdGithubActionsCi ? `./${projectName}/.github/workflows/ci.yml` : null %>"
 ---
 
-name: CI<% if (features.ciCdStablePublish) { %> & Publish to npmjs<% } %>
+name: CI
 
 on:
   push:
@@ -14,11 +12,8 @@ on:
 
 jobs:
   ci:
-    name: CI and Publish
+    name: CI
     runs-on: ubuntu-latest
-
-    env:
-      PUBLISH_PREFIX: ${{ vars.PUBLISH_PREFIX != '' && vars.PUBLISH_PREFIX || 'rosen-version:' }}
 
     steps:
       - name: Checkout
@@ -64,47 +59,4 @@ jobs:
         run: |
           git fetch origin dev
           npx changeset status --since=origin/dev
-<% } -%>
-<% if (features.ciCdStablePublish) { -%>
-
-      - name: Release Verification
-        if: ${{ startsWith(github.event.head_commit.message, env.PUBLISH_PREFIX) && github.ref == 'refs/heads/dev' }}
-        id: perm
-        env:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO: ${{ github.repository }}
-          ACTOR: ${{ github.actor }}
-        run: |
-          PERM=$(
-            curl -fsSL -H "Authorization: Bearer $TOKEN" \
-              "https://api.github.com/repos/$REPO/collaborators/$ACTOR/permission" \
-            | jq -r '.role_name'
-          )
-          if [[ "$PERM" == "admin" || "$PERM" == "maintain" ]]; then \
-            echo "is_admin=true" >> "$GITHUB_OUTPUT"; fi
-
-      - name: Publish to npm
-        if: ${{ steps.perm.outputs.is_admin == 'true' }}
-        id: publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
-          npx changeset publish | tee .changeset_log
-          { echo 'CHANGESET_LOG<<_LOG_'; cat .changeset_log; echo '_LOG_'; } >> "$GITHUB_ENV"
-<% if (features.discordAnnounce) { -%>
-
-      - name: Discord Announce
-        if: ${{ steps.publish.conclusion == 'success' }}
-        shell: bash
-        run: |
-          PATTERN_START='success.*packages published successfully:'
-          PATTERN_END='Creating git tag...'
-
-          released_versions=$(printf '%s\n' "$CHANGESET_LOG" \
-            | sed -n "/$PATTERN_START/,/$PATTERN_END/{/$PATTERN_START/d;/$PATTERN_END/d;p}")
-
-          msg=$(printf '%s\n' "$released_versions" | grep -o '@.*')
-          [[ -n "$msg" ]] && curl -s -X POST --form-string $'content=```text\n'"$msg"$'\n```' "${{ secrets.DISCORD_HOOK }}"
-<% } -%>
 <% } -%>

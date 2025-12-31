@@ -13,9 +13,5 @@ to: "<%= features.changesets ? `./${projectName}/.changeset/config.json` : null 
   "ignore": [],
   "privatePackages": {
     "version": true
-  }<% if (features.ciCdGithubActionsSnapshot || features.ciCdGitlabSnapshot) { %>,
-  "snapshot": {
-    "useCalculatedVersion": true,
-    "prereleaseTemplate": "{tag}"
-  }<% } %>
+  }
 }

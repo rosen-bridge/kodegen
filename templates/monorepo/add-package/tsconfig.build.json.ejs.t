@@ -8,7 +8,5 @@ to: ./<%= packagePath %>/tsconfig.build.json
   },
 <% if (testing) { -%>
   "exclude": ["tests", "vitest.config.ts"],
-<% } else { -%>
-  "exclude": ["tests"],
 <% } -%>
 }

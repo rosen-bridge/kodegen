@@ -8,7 +8,7 @@ default:
 
 workflow:
   rules:
-    - if: '$CI_PIPELINE_SOURCE =~ /push<% if (features.ciCdGitlabSnapshot) { %>|web/<% } %>'
+    - if: '$CI_PIPELINE_SOURCE =~ /push<% if (features.ciCdGitlabSnapshot) { %>|web<% } %>/'
       when: always
     - when: never
 

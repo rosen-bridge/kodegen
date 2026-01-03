@@ -12,8 +12,8 @@ to: ./<%= packagePath %>/tsconfig.json
     "outDir": "./dist"
   },
 <% if (testing) { -%>
-  "include": ["tests", "lib", "vitest.config.ts"]
-<% } else { -%>
   "include": ["tests", "lib"]
+<% } else { -%>
+  "include": ["lib"]
 <% } -%>
 }

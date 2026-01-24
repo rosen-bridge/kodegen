@@ -25,7 +25,7 @@ module.exports = {
       },
       {
         type: 'multiselect',
-        choices() {
+        choices: () => {
           return [
             {
               type: 'multiselect',

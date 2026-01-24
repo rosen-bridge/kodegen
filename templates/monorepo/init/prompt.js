@@ -1,3 +1,8 @@
+const featureState = {
+  _changesetsEnabled: false,
+  _publishEnabled: false,
+};
+
 module.exports = [
   {
     type: 'input',
@@ -12,11 +17,9 @@ module.exports = [
   },
   {
     type: 'multiselect',
-    _changesetsEnabled: false,
-    _publishEnabled: false,
-    choices() {
-      const includePublish = this._changesetsEnabled;
-      const includeAnnounce = this._publishEnabled;
+    choices: () => {
+      const includePublish = featureState._changesetsEnabled;
+      const includeAnnounce = featureState._publishEnabled;
 
       const baseCiCdChoices = [
         {
@@ -127,8 +130,8 @@ module.exports = [
       selectedNames = this.enabled.map(ch => ch.name);
       const nextChangesetsEnabled = selectedNames.includes('changesets');
 
-      if (this._changesetsEnabled !== nextChangesetsEnabled) {
-        this._changesetsEnabled = nextChangesetsEnabled;
+      if (featureState._changesetsEnabled !== nextChangesetsEnabled) {
+        featureState._changesetsEnabled = nextChangesetsEnabled;
         await resetAndReEnable(selectedNames);
       }
 
@@ -138,8 +141,8 @@ module.exports = [
         selectedNames.includes('ciCdGitlabSnapshot') ||
         selectedNames.includes('ciCdGithubActionsSnapshot');
 
-      if (this._publishEnabled !== nextPublishEnabled) {
-        this._publishEnabled = nextPublishEnabled;
+      if (featureState._publishEnabled !== nextPublishEnabled) {
+        featureState._publishEnabled = nextPublishEnabled;
         await resetAndReEnable(selectedNames);
       }
 

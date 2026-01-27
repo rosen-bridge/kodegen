@@ -45,7 +45,8 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
   "author": "<%= author %>",
   "license": "MIT",
   "engines": {
-    "node": ">=22.18.0"
+    "node": ">=22.18.0",
+    "npm": "11.6.2"
   }
 }
 

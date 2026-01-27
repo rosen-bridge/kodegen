@@ -10,6 +10,7 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
 {
   "name": "<%= h.inflection.dasherize(serviceName) %>",
   "version": "0.0.0",
+  <% if (hasCiPublishWorkflow) { %>"private": true,<% } %>
   "description": "<%= description %>",
   "repository": {
     "type": "git",
@@ -65,6 +66,7 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
     "@types/config": "^0.0.41"
   },
   "engines": {
-    "node": ">=22.18.0"
+    "node": ">=22.18.0",
+    "npm": "11.6.2"
   }
 }

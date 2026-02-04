@@ -1,5 +1,0 @@
----
-'kodegen': patch
----
-
-Disable strictPropertyInitialization

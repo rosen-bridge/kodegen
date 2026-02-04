@@ -1,5 +1,20 @@
 # kodegen
 
+## 0.9.0
+
+### Minor Changes
+
+- remove vitest-related config
+- Add GA CI/CD
+- Standardize the Gitlab-ci to parrent-child format
+- Add snapshot/stable publish
+- Set npm version 11.6.2
+
+### Patch Changes
+
+- Disable strictPropertyInitialization
+- Fix unused ts-expect-error caused by vitest config
+
 ## 0.8.0
 
 ### Minor Changes
@@ -17,7 +32,6 @@
 ### Patch Changes
 
 - Move shared devDependencies to monorepo root and update dependencies
-
 
 ## 0.7.1
 

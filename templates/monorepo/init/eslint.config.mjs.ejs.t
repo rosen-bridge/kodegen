@@ -63,6 +63,8 @@ export default [
       { ignoreMiddleExtensions: true },
      ],
       ...typescriptEslint.configs.recommended.rules,
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': ['error'],
 <% if (features.eslintFeaturesReact) { -%>
       // React-Specific Rules
       'react-refresh/only-export-components': 'warn',

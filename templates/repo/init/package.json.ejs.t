@@ -47,8 +47,8 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "express": "^4.18.1",
 <% } -%>
 <% if (features.logging) { -%>
-    "@rosen-bridge/callback-logger": "1.0.1",
-    "@rosen-bridge/winston-logger": "2.0.1",
+    "@rosen-bridge/callback-logger": "2.0.0",
+    "@rosen-bridge/winston-logger": "3.0.0",
 <% } -%>
 <% if (features.database) { -%>
     "reflect-metadata": "^0.1.13",
@@ -65,14 +65,14 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
 <% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
     "@typescript-eslint/eslint-plugin": "^8.43.0",
     "@typescript-eslint/parser": "^8.43.0",
-    "@eslint/js": "^9.37.0",
+    "@eslint/js": "^9.39.1",
     "eslint": "^9.35.0",
     "globals": "16.3.0",
     <% if (features.eslintFeaturesReact) { -%>
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     <% } -%>
-    "eslint-config-prettier": "^10.1.5",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-check-file": "^3.2.0",
     "prettier": "^3.2.4",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",

@@ -5,21 +5,11 @@ to: "<%= features.database || features.logging ? `./${projectName}/src/bootstrap
 import 'reflect-metadata';
 <% } -%>
 <% if (features.logging) { -%>
-import { CallbackLoggerFactory } from '@rosen-bridge/callback-logger';
+import { DefaultLogger } from '@rosen-bridge/abstract-logger';
 import WinstonLogger from '@rosen-bridge/winston-logger';
+import CallbackLogger from '@rosen-bridge/callback-logger';
 
-import {
-  maxLogSize,
-  maxLogFilesCount,
-  logsPath,
-  logLevel,
-} from './configs';
+import { logs } from './configs';
 
-CallbackLoggerFactory.init(new WinstonLogger([{
-    type: 'file',
-    path: logsPath,
-    maxSize: maxLogSize,
-    maxFiles: maxLogFilesCount,
-    level: logLevel
-}]));
+DefaultLogger.init(new CallbackLogger(WinstonLogger.createLogger(logs)));
 <% } -%>

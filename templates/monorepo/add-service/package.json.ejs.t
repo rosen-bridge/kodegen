@@ -49,8 +49,8 @@ sh: cd <%= servicePath %> && npx --yes sort-package-json && npm i
     "express": "^4.18.1",
 <% } -%>
 <% if (features.logging) { -%>
-    "@rosen-bridge/callback-logger": "2.0.0",
-    "@rosen-bridge/winston-logger": "3.0.0",
+    "@rosen-bridge/abstract-logger": "^4.0.0",
+    "@rosen-bridge/callback-logger": "^2.0.0",
     "@rosen-bridge/winston-logger": "^3.0.0",
 <% } -%>
 <% if (features.database) { -%>

@@ -9,7 +9,12 @@ to: ./<%= packagePath %>/tsconfig.json
 {
   "extends": "<%= extendsPath %>",
   "compilerOptions": {
-    "outDir": "./dist"
+    "outDir": "./dist",
+<% if (testing) { -%>
+    "types": ["node", "vitest/globals"],
+<% } else { -%>
+    "types": ["node"],
+<% } -%>
   },
 <% if (testing) { -%>
   "include": ["tests", "lib"]

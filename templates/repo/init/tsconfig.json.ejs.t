@@ -4,6 +4,11 @@ to: ./<%= projectName %>/tsconfig.json
 {
   "compilerOptions": {
     "baseUrl": ".",
+<% if (features.testing) { -%>
+    "types": ["node", "vitest/globals"],
+<% } else { -%>
+    "types": ["node"],
+<% } -%>
 <% if (features.database) { -%>
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,

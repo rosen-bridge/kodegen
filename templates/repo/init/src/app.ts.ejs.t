@@ -5,13 +5,13 @@ import express from 'express';
 
 import { apiPort, apiHost } from '@/configs';
 <% if (features.logging) { -%>
-import { CallbackLoggerFactory } from '@rosen-bridge/callback-logger';
+import { DefaultLogger } from '@rosen-bridge/abstract-logger';
 <% } -%>
 
 import router from './router/v1';
 
 <% if (features.logging) { -%>
-const logger = CallbackLoggerFactory.getInstance().getLogger(import.meta.url);
+const logger = DefaultLogger.getInstance().child(import.meta.url);
 <% } -%>
 
 const app = express();

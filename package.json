@@ -17,6 +17,6 @@
     "kodegen": ".bin/cli.js"
   },
   "devDependencies": {
-    "@rosen-bridge/changeset-formatter": "^1.1.0"
+    "@rosen-bridge/changeset-formatter": "^2.0.1"
   }
 }

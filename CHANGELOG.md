@@ -1,5 +1,24 @@
 # kodegen
 
+## 0.10.0
+
+### Minor Changes
+
+- Ignore unused var error for js
+
+### Patch Changes
+
+- Add types to tsconfig compiler options
+- Add directory field to repository configuration for monorepo support
+- Update dependencies
+    @rosen-bridge/winston-logger@3.0.0
+
+- Remove unnecessary dependencies
+    @rosen-bridge/callback-logger
+
+- Add dependencies
+    @rosen-bridge/abstract-logger@4.0.0
+
 ## 0.9.0
 
 ### Minor Changes

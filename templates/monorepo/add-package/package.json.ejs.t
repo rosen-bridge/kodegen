@@ -13,7 +13,8 @@ sh: cd <%= packagePath %> && npx --yes sort-package-json && npm i
   "description": "<%= description %>",
   "repository": {
     "type": "git",
-    "url": "<%= repo %>"
+    "url": "<%= repo %>",
+    "directory": "<%= packagePath %>"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

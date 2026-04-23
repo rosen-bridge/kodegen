@@ -1,0 +1,15 @@
+image: $GITLAB_CI_IMAGE
+
+default:
+  interruptible: true
+
+workflow:
+  auto_cancel:
+    on_job_failure: all
+
+include:
+  - component: $CI_SERVER_FQDN/${CI_COMPONENT}
+
+    inputs:
+      enable_type_check: false
+      enable_changeset: true

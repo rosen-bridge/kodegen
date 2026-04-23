@@ -1,27 +1,18 @@
-image: node:22.18.0
+image: $GITLAB_CI_IMAGE
 
-stages:
-  - installation
-  - changeset
+default:
+  interruptible: true
 
-installation:
-  stage: installation
-  cache:
-    key: ${CI_COMMIT_REF_NAME}
-    policy: push
-    paths:
-      - node_modules
-  script:
-    - npm ci
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE =~ /push|web/'
+      when: always
+    - when: never
 
-changeset:
-  stage: changeset
-  cache:
-    key: ${CI_COMMIT_REF_NAME}
-    policy: pull
-    paths:
-      - node_modules
-  before_script:
-    - git fetch origin dev
-  script:
-    - npx changeset status --since=origin/dev
+include:
+  - component: $CI_SERVER_FQDN/${ROOT_COMPONENT}
+
+    inputs:
+      enable_build: false
+      enable_ci_child: true
+      enable_snapshot_publish_child: true

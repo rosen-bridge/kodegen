@@ -54,9 +54,6 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build
-
       - name: Publish snapshot to npm
         id: publish
         env:

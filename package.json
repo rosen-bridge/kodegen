@@ -3,6 +3,12 @@
   "version": "0.10.0",
   "description": "A code generator for js/ts projects",
   "main": "index.js",
+  "files": [
+    ".bin",
+    "index.js",
+    "templates",
+    "CHANGELOG.md"
+  ],
   "scripts": {
     "version": "npx changeset version && npm i",
     "release": "npm publish --access public"

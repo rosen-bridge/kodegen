@@ -18,9 +18,3 @@ npm:
 ```sh
 npm i <%= packageName %>
 ```
-
-yarn:
-
-```sh
-yarn add <%= packageName %>
-```

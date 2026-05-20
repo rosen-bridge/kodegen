@@ -15,7 +15,7 @@ to: ./<%= servicePath %>/tsconfig.json
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
 <% } -%>
-<% if (testing) { -%>
+<% if (features.testing) { -%>
     "types": ["node", "vitest/globals"],
 <% } else { -%>
     "types": ["node"],

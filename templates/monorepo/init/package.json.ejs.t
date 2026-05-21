@@ -68,6 +68,7 @@ sh: cd <%= monorepoName %> && npx --yes sort-package-json && npm i
     "cross-env": "^10.1.0",
     "husky": "^9.1.7",
     "lint-staged": "^13.0.3",
+    "sort-package-json": "^3.6.1",
     "rimraf": "^6.0.1",
     "typescript": "^5.8.3"
   },

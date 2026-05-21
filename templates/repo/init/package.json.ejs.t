@@ -89,6 +89,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "@types/config": "^0.0.41",
     "husky": "^9.1.7",
     "lint-staged": "^13.0.3",
+    "sort-package-json": "^3.6.1",
 <% if (features.knip) { -%>
     "knip": "5.65.0",
 <% } -%>

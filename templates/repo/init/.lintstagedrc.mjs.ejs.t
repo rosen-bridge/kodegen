@@ -5,6 +5,7 @@ const tasks = {
   '*.ts': () => 'npm run type-check',
 };
 
+tasks['package.json'] = 'sort-package-json';
 <% if (features.eslintFeaturesNode || features.eslintFeaturesBrowser || features.eslintFeaturesReact) { -%>
 tasks['*'] = ['prettier --ignore-unknown --write'];
 tasks['*.{js,ts}'] = ['eslint --fix'];

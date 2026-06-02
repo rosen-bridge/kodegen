@@ -34,7 +34,7 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
     "madge": "madge --circular --extensions ts ./",
 <% } -%>
 <% if (features.database) { -%>
-    "typeorm": "cross-env NODE_OPTIONS=\"--import tsx\" typeorm",
+    "typeorm": "cross-env NODE_OPTIONS=\"--import tsx\" extended-typeorm",
     "typeorm:generate": "npm run typeorm migration:generate ./src/db/migrations/migration -- -p -d ./src/dataSource.ts",
     "typeorm:migrate": "npm run typeorm migration:run -- -d ./src/dataSource.ts",
 <% } -%>
@@ -48,12 +48,12 @@ sh: cd <%= projectName %> && npx --yes sort-package-json && npm i
 <% } -%>
 <% if (features.logging) { -%>
     "@rosen-bridge/abstract-logger": "^4.0.0",
-    "@rosen-bridge/winston-logger": "^3.0.0",
+    "@rosen-bridge/winston-logger": "^3.0.1",
 <% } -%>
 <% if (features.database) { -%>
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.8",
-    "@rosen-bridge/extended-typeorm": "^1.0.1",
+    "@rosen-bridge/extended-typeorm": "^1.1.0",
 <% } -%>
     "config": "^3.3.7",
     "tsx": "^4.19.4"

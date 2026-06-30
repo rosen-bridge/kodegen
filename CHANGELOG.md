@@ -1,5 +1,20 @@
 # kodegen
 
+## 0.11.0
+
+### Minor Changes
+
+- add sort-package-json for sorting package.json's automatically before commit
+
+### Patch Changes
+
+- update @rosen-bridge/winston-logger version
+- add 'snapshot-*-release' for mirroring sync from Github to Gitlab
+- Remove yarn from generated files
+- Fix typeorm script for generated package.json:
+  - Update @rosen-bridge/extended-typeorm version
+  - Update typeorm scripts for package.json templates
+
 ## 0.10.0
 
 ### Minor Changes
@@ -11,13 +26,13 @@
 - Add types to tsconfig compiler options
 - Add directory field to repository configuration for monorepo support
 - Update dependencies
-    @rosen-bridge/winston-logger@3.0.0
+  @rosen-bridge/winston-logger@3.0.0
 
 - Remove unnecessary dependencies
-    @rosen-bridge/callback-logger
+  @rosen-bridge/callback-logger
 
 - Add dependencies
-    @rosen-bridge/abstract-logger@4.0.0
+  @rosen-bridge/abstract-logger@4.0.0
 
 ## 0.9.0
 

@@ -17,18 +17,18 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Setup npm 11.6.2
-        run: npm i -g npm@11.6.2
+      - name: Setup npm ${{ vars.NPM_VERSION }}
+        run: npm i -g npm@${{ vars.NPM_VERSION }}
 
       - name: Install Dependencies
         run: npm ci

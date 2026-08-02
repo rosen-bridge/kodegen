@@ -1,6 +1,6 @@
 {
   "name": "kodegen",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "A code generator for js/ts projects",
   "main": "index.js",
   "files": [
@@ -10,7 +10,7 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "version": "npx changeset version && npm i",
+    "version": "npx changeset version && npm i && npx changeset --empty",
     "release": "npm publish --access public"
   },
   "author": "Rosen Team",

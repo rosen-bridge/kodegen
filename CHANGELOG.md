@@ -1,5 +1,11 @@
 # kodegen
 
+## 0.12.0
+
+### Minor Changes
+
+- Use composite action in GAs and update the actions verisons
+
 ## 0.11.0
 
 ### Minor Changes
@@ -9,7 +15,7 @@
 ### Patch Changes
 
 - update @rosen-bridge/winston-logger version
-- add 'snapshot-*-release' for mirroring sync from Github to Gitlab
+- add 'snapshot-\*-release' for mirroring sync from Github to Gitlab
 - Remove yarn from generated files
 - Fix typeorm script for generated package.json:
   - Update @rosen-bridge/extended-typeorm version

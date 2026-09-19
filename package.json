@@ -24,5 +24,9 @@
   },
   "devDependencies": {
     "@rosen-bridge/changeset-formatter": "^2.0.1"
+  },
+  "engines": {
+    "node": ">=22.18.0",
+    "npm": "11.6.2"
   }
 }
